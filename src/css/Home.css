@@ -1,0 +1,148 @@
+.title1, .title2{
+    margin:20px;
+    animation: fill .5s ease forwards 4.4s;
+}
+
+.subtitle{
+    margin-left: 18px;
+    opacity: 0;
+    animation: appear 1s linear forwards 4.6s;
+    transform: translateY(-100%);
+}
+
+.iconContainer{
+    margin-left: 1rem;
+}
+
+.iconContainer a{
+    text-decoration: none;
+    opacity: 0;
+    animation: appear 1s linear forwards 5s;
+}
+
+.iconContainer i{
+    font-size: 40px;
+    transition-duration: 300ms;
+}
+
+.iconContainer i:hover{
+    transform: scale(1.1);
+}
+
+.title1 path:nth-child(1){
+    stroke-dasharray: 649.9840087890625;
+    stroke-dashoffset: 649.9840087890625;
+    animation: line-anim 2s ease forwards;
+}
+
+.title1 path:nth-child(2){
+    stroke-dasharray: 421.152099609375;
+    stroke-dashoffset: 421.152099609375;
+    animation: line-anim 2s ease forwards 0.3s;
+}
+
+.title1 path:nth-child(3){
+    stroke-dasharray: 318.719970703125;
+    stroke-dashoffset: 318.719970703125;
+    animation: line-anim 2s ease forwards 0.6s;
+}
+
+.title1 path:nth-child(4){
+    stroke-dasharray: 223.48797607421875;
+    stroke-dashoffset: 223.48797607421875;
+    animation: line-anim 2s ease forwards 0.9s;
+}
+
+.title1 path:nth-child(5){
+    stroke-dasharray: 421.1520080566406;
+    stroke-dashoffset: 421.1520080566406;
+    animation: line-anim 2s ease forwards 1.2s;
+}
+
+.title1 path:nth-child(6){
+    stroke-dasharray: 431.11614990234375;
+    stroke-dashoffset: 431.11614990234375;
+    animation: line-anim 2s ease forwards 1.5s;
+}
+
+.title2 path:nth-child(1){
+    stroke-dasharray: 351.488037109375;
+    stroke-dashoffset: 351.488037109375;
+    animation: line-anim 2s ease forwards 1.8s;
+}
+
+.title2 path:nth-child(2){
+    stroke-dasharray: 463.4035949707031;
+    stroke-dashoffset: 463.4035949707031;
+    animation: line-anim 2s ease forwards 2.1s;
+}
+
+.title2 path:nth-child(3){
+    stroke-dasharray: 421.1520690917969;
+    stroke-dashoffset: 421.1520690917969;
+    animation: line-anim 2s ease forwards 2.4s;
+}
+
+.title2 path:nth-child(4){
+    stroke-dasharray: 511.427001953125;
+    stroke-dashoffset: 511.427001953125;
+    animation: line-anim 2s ease forwards 2.7s;
+}
+
+.title2 path:nth-child(5){
+    stroke-dasharray: 431.21429443359375;
+    stroke-dashoffset: 431.21429443359375;
+    animation: line-anim 2s ease forwards 3s;
+}
+
+.title2 path:nth-child(6){
+    stroke-dasharray: 450.261474609375;
+    stroke-dashoffset: 450.261474609375;
+    animation: line-anim 2s ease forwards 3.3s;
+}
+
+@keyframes line-anim{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill{
+    from{
+        fill: transparent;
+    }
+    to{
+        fill:white;
+    }
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@media(max-width:768px){
+    .title1, .title2{
+        width: 400px;
+    }
+}
+
+@media(max-width:576px){
+    .title1, .title2{
+        width: 100%;
+        margin: 0;
+    }
+
+    .subtitle{
+        margin-left: 0;
+    }
+
+    .iconContainer{
+        margin: 0;
+    }
+}

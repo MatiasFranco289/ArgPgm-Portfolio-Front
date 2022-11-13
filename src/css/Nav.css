@@ -1,0 +1,41 @@
+
+.nav-link{
+    color: rgb(221, 221, 221);
+    opacity: 0;
+    animation: appear .6s ease-out forwards;
+    transform: translateY(-50%);
+}
+
+.btn-outline-success{
+    opacity: 0;
+    animation: appear .6s ease-out forwards;
+    animation-delay: 600ms;
+    transform: translateY(-100%);
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+}
+
+.nav-link:hover{
+    color: white;
+    transition-duration: 300ms;
+}
+
+.btn-outline-success{
+    transition-duration: 300ms;
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
