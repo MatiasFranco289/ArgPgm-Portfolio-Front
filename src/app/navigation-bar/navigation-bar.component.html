@@ -1,0 +1,40 @@
+<!-- Barra de navegacion -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler ms-auto mb-2 mb-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <fa-icon [icon]="faBars"  style="color:#fff; font-size:28px;"></fa-icon>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a routerLinkActive="active-link" routerLink="" [routerLinkActiveOptions]="{exact:true}" class="nav-link" style="animation-delay:0ms;">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLinkActive="active-link" routerLink="/projects" style="animation-delay:200ms;">Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="/about" style="animation-delay:400ms;">Sobre mi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active-link" routerLink="/blog" style="animation-delay:600ms;">Blog</a>
+          </li>
+
+          <li *ngIf="logged" class="nav-item">
+            <a routerLink="/login">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Conectarse</button>
+            </a>
+          </li>
+
+          <li *ngIf="!logged" class="nav-item">
+            <a (click) = handleDisconnect()>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Desconectarse</button>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+</nav>

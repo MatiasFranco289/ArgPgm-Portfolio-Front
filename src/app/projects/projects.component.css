@@ -1,0 +1,10 @@
+.title-project{
+    opacity: 0;
+    animation: titleAppear 1.5s ease-out forwards;
+}
+
+@keyframes titleAppear{
+    100%{
+        opacity: 1;
+    }
+}
