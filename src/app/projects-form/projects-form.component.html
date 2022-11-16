@@ -11,7 +11,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="name" style="min-width:130px;">Nombre </label>
-            <input class="col-6" type="text" id="name" style="min-width:250px;" 
+            <input class="col-6" type="text" id="name" style="min-width:250px;outline:none;" 
             (keyup)="handleInputs($event)" [value]="inputValues.name">
             
             <div *ngIf="errors.name" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -21,7 +21,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="fs-4" for="dateInit" style="min-width:130px;">Inicio </label>
-            <input class="col-6" type="date" id="dateInit" style="min-width:250px;"
+            <input class="col-6" type="date" id="dateInit" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.dateInit">
             
             <div *ngIf="errors.dateInit" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -31,7 +31,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="dateFinish" style="min-width:130px;">Fin </label>
-            <input class="col-6" type="date" id="dateFinish" style="min-width:250px;"
+            <input class="col-6" type="date" id="dateFinish" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.dateFinish">
 
             <div *ngIf="errors.dateFinish" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -41,7 +41,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="description" style="min-width:130px;">Descripcion </label>
-            <textarea class="col-6" type="text" id="description" style="min-width:250px;min-height: 100px;"
+            <textarea class="col-6" type="text" id="description" style="min-width:250px;outline:none;min-height: 100px;"
             (keyup)="handleInputs($event)" [value]="inputValues.description">
             </textarea>
 
@@ -52,7 +52,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="git" style="min-width:130px;">GitHub </label>
-            <input class="col-6" type="text" id="git" style="min-width:250px;"
+            <input class="col-6" type="text" id="git" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.git">
 
             <div *ngIf="errors.git" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -62,7 +62,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="deploy" style="min-width:130px;">Deploy </label>
-            <input class="col-6" type="text" id="deploy" style="min-width:250px;"
+            <input class="col-6" type="text" id="deploy" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.deploy">
 
             <div *ngIf="errors.deploy" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -72,7 +72,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="video" style="min-width:130px;">Video </label>
-            <input class="col-6" type="text" id="video" style="min-width:250px;"
+            <input class="col-6" type="text" id="video" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.video">
 
             <div *ngIf="errors.video" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -82,7 +82,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
         
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="img" style="min-width:130px;">Imagen </label>
-            <input class="col-6" type="text" id="img" style="min-width:250px;"
+            <input class="col-6" type="text" id="img" style="min-width:250px;outline:none;"
             (keyup)="handleInputs($event)" [value]="inputValues.img">
 
             <div *ngIf="errors.img" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
@@ -93,7 +93,7 @@ justify-content-center align-items-center text-white z-index-3 overlay">
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="video" style="min-width:130px;">Tecnologias </label>
             <!-- Esto va a venir de la db -->
-            <div class="col-6 d-flex flex-wrap" style="min-width:250px;">
+            <div class="col-6 d-flex flex-wrap" style="min-width:250px;outline:none;">
                 <button class="btn btn-outline-success m-2">HTML</button>
                 <button class="btn btn-outline-success m-2">CSS</button>
                 <button class="btn btn-outline-success m-2">BOOTSTRAP</button>

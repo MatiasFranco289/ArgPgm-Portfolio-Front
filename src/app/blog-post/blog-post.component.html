@@ -1,0 +1,33 @@
+<!-- Carta publicacion -->
+<div class="text-start p-3 position-relative blog-card">
+
+    <div class="position-absolute top-0 end-0 p-2">
+        <button class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon [icon]="faPen" class="text-white"></fa-icon>
+        </button>
+
+        <button class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon [icon]="faTrash" class="text-white"></fa-icon>
+        </button>
+    </div>
+
+    <div>
+        <h2 class="m-0">{{title}}</h2>
+
+        <div class="d-flex">
+            <fa-icon [icon]="faCalendar" class="text-white"></fa-icon>
+            <p class="ms-2">{{date}}</p>
+        </div>
+        
+    </div>
+
+    <div>
+        <p>{{description}}</p>
+
+        <div class="d-flex justify-content-around flex-wrap">
+            <a *ngFor="let i of imgs" href="{{i}}" target="_blank" class="m-3" style="width:40%;min-width: 200px;">
+                <img src="{{i}}" class="post-image" alt="postImage.png">
+            </a>
+        </div>
+    </div>
+</div>

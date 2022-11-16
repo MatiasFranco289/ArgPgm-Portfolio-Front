@@ -13,6 +13,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectsFormComponent } from './projects-form/projects-form.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProjectsFormComponent } from './projects-form/projects-form.component';
     ErrorComponent,
     NavigationBarComponent,
     ProjectCardComponent,
-    ProjectsFormComponent
+    ProjectsFormComponent,
+    BlogPostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,31 @@
-<navigation-bar></navigation-bar>
-<p>blog works!</p>
+<div style="min-height:100vh;">
+    <navigation-bar></navigation-bar>
+    <!-- Seccion principal -->
+    <div class="container-sm text-white text-center">
+
+        <div class="position-relative">
+            <h1>Blog</h1>
+
+            <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+                <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
+            </button>
+        </div>
+        
+
+        <!-- Publicaciones -->
+        <div class="position-relative">
+            <blog-post title="Titulo" date="11/11/11"
+             description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
+             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
+             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!" 
+             [imgs]="['https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png','https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png']">
+            </blog-post>
+        </div>
+    </div>
+</div>

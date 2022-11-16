@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  protected faPlus;
+
+  constructor() { 
+    this.faPlus = faPlus;
+  }
 
   ngOnInit(): void {
   }
