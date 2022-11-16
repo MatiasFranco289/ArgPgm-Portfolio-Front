@@ -1,0 +1,110 @@
+<div *ngIf="isOpen" class="position-fixed top-0 start-0 w-100 h-100 d-flex 
+justify-content-center align-items-center text-white z-index-3 overlay">
+
+    <form action="" class="bg-dark d-flex flex-column p-3 position-relative container-sm shadow"
+    style="min-width:270px ;">
+        <h2 class="text-center">Crear proyecto</h2>
+
+        <button (click)="closeForm($event)" class="top-0 end-0 position-absolute btn btn-outline-danger m-1">
+            <fa-icon [icon]="faXmark" class="text-white fs-3"></fa-icon>
+        </button>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="name" style="min-width:130px;">Nombre </label>
+            <input class="col-6" type="text" id="name" style="min-width:250px;" 
+            (keyup)="handleInputs($event)" [value]="inputValues.name">
+            
+            <div *ngIf="errors.name" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.name}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="fs-4" for="dateInit" style="min-width:130px;">Inicio </label>
+            <input class="col-6" type="date" id="dateInit" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.dateInit">
+            
+            <div *ngIf="errors.dateInit" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.dateInit}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="dateFinish" style="min-width:130px;">Fin </label>
+            <input class="col-6" type="date" id="dateFinish" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.dateFinish">
+
+            <div *ngIf="errors.dateFinish" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.dateFinish}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="description" style="min-width:130px;">Descripcion </label>
+            <textarea class="col-6" type="text" id="description" style="min-width:250px;min-height: 100px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.description">
+            </textarea>
+
+            <div *ngIf="errors.description" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.description}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="git" style="min-width:130px;">GitHub </label>
+            <input class="col-6" type="text" id="git" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.git">
+
+            <div *ngIf="errors.git" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.git}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="deploy" style="min-width:130px;">Deploy </label>
+            <input class="col-6" type="text" id="deploy" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.deploy">
+
+            <div *ngIf="errors.deploy" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.deploy}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="video" style="min-width:130px;">Video </label>
+            <input class="col-6" type="text" id="video" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.video">
+
+            <div *ngIf="errors.video" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.video}}
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="img" style="min-width:130px;">Imagen </label>
+            <input class="col-6" type="text" id="img" style="min-width:250px;"
+            (keyup)="handleInputs($event)" [value]="inputValues.img">
+
+            <div *ngIf="errors.img" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
+                {{errors.img}}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
+            <label class="  fs-4" for="video" style="min-width:130px;">Tecnologias </label>
+            <!-- Esto va a venir de la db -->
+            <div class="col-6 d-flex flex-wrap" style="min-width:250px;">
+                <button class="btn btn-outline-success m-2">HTML</button>
+                <button class="btn btn-outline-success m-2">CSS</button>
+                <button class="btn btn-outline-success m-2">BOOTSTRAP</button>
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-light my-2 w-25" type="submit">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

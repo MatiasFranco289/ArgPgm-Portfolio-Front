@@ -1,13 +1,13 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { faGithub, faYoutube} from '@fortawesome/free-brands-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-
+import { faLink, faCalendar, faFlagCheckered, faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'project-card',
   templateUrl: './project-card.component.html',
   styleUrls: ['./project-card.component.css']
 })
+
 export class ProjectCardComponent implements OnInit {
   @Input() name:string;
   @Input() dateInit:string;
@@ -17,11 +17,16 @@ export class ProjectCardComponent implements OnInit {
   @Input() videoLink:string;
   @Input() projectLink:string;
   @Input() deployLink:string;
-  @Input() tecnologys:Array<String>;
-
+  @Input() tecnologys:Array<string>;
   protected faGithub;
   protected faLink;
   protected faYoutube;
+  protected faCalendar;
+  protected faFlagCheckered;
+  protected faPen;
+  protected faTrash;
+  protected defaultImg:string;
+  protected logged:boolean;
 
   constructor(){
     this.name = "";
@@ -32,35 +37,19 @@ export class ProjectCardComponent implements OnInit {
     this.videoLink="";
     this.projectLink="";
     this.deployLink="";
-    this.tecnologys=[];
-
     this.faGithub = faGithub;
     this.faLink = faLink;
     this.faYoutube = faYoutube;
-
-    //Importar iconos de tecnologias mas tarde
-
-    //HTML
-    //CSS
-    //React
-    //Angular
-    //JavaScript
-    //Typescript
-    //BootStrap
-    //Tailwind
-    //Redux
-    //Node
-    //Java
-    //PHP
-    //Express
-    //Sequelize
-    //PostgreSQL
-    //MySQL
+    this.defaultImg = 'https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png';
+    this.tecnologys=[];
+    this.faCalendar = faCalendar;
+    this.faFlagCheckered = faFlagCheckered;
+    this.faPen = faPen;
+    this.faTrash = faTrash;
+    this.logged = true;
   }
 
 
   ngOnInit(): void {
-    
   }
-
 }

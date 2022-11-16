@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { ProjectsFormComponent } from './projects-form/projects-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     LoginComponent,
     ErrorComponent,
     NavigationBarComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    ProjectsFormComponent
   ],
   imports: [
     BrowserModule,
