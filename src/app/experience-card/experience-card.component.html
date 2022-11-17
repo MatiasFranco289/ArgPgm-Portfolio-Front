@@ -1,0 +1,26 @@
+<!-- Experiencia -->
+<div class="d-flex justify-content-start align-items-center p-2 position-relative">
+
+    <div class="ms-3 position-relative">
+
+        <fa-icon [icon] = "faCircle"></fa-icon>
+
+        <div class="position-absolute top-0 end-0 p-3">
+            <button class="btn btn-outline-dark my-2 my-sm-0">
+                <fa-icon [icon] = "faPen" class="text-white"></fa-icon>
+            </button>
+            
+            <button class="btn btn-outline-dark my-2 my-sm-0">
+                <fa-icon [icon] = "faTrash" class="text-white"></fa-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="text-start ms-5">
+        <h4 class="m-0">{{name}}</h4>
+        <h6 class="m-0">{{dateInit}} - {{dateFinish}} · {{duration}}</h6>
+        <p>{{location}}</p>
+
+        <p>{{description}}</p>
+    </div>
+</div>

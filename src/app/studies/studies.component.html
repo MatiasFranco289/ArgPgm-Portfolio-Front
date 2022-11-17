@@ -1,0 +1,23 @@
+<div class="p-3 text-center from-left" style="margin-top:200px;">
+    <div class="position-relative">
+        <h2 class="text-white mb-3">Estudios</h2>
+
+        <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+            <i class="fa-solid fa-plus text-white fs-3"></i>
+            <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
+        </button>
+    </div>
+    <!-- Contenedor estudios -->
+    <div class="p-3">
+
+        <div *ngFor="let s of studies">
+            <!-- Esto lo deberias rellenar con datos de s en realidad que va a ser un objeto que te va a dar el padre de este componente -->
+            <study-card name="Nombre estudio" type="Tipo de formacion"
+            dateInit="feb. 2022" dateFinish="feb. 2022" 
+            description="Descripcion. (No la pongo ahora porque esto va a venir de la DB)"
+            img="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png">
+            </study-card>
+        </div>
+        
+    </div>
+</div>

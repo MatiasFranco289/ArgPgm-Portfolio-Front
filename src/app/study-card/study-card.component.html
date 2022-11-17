@@ -1,0 +1,23 @@
+<!-- Carta estudio -->
+<div class="p-2 d-flex border-bottom border-1 flex-wrap position-relative">
+
+    <div class="position-absolute top-0 end-0">
+        <button class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon [icon]="faPen" class="text-white"></fa-icon>
+        </button>
+        
+        <button class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon [icon]="faTrash" class="text-white"></fa-icon>
+        </button>
+    </div>
+
+    <img src="{{img}}" alt="thumbnail.png" style="width:80px;height:80px;box-shadow:0 0 2px black;">
+    
+    <div class="text-white ms-3 mt-3 text-start">
+        <h4 class="m-0">{{name}}</h4>
+        <h6 class="m-0">{{type}}</h6>
+        <p>{{dateInit}} - {{dateFinish}}</p>
+
+        <h6>{{description}}</h6>
+    </div>
+</div>

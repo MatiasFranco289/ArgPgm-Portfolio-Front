@@ -14,18 +14,21 @@
 
         <!-- Publicaciones -->
         <div class="position-relative">
-            <blog-post title="Titulo" date="11/11/11"
-             description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
-             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
-             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-             quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-             Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!" 
-             [imgs]="['https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png','https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png']">
-            </blog-post>
+            <div *ngFor="let p of publications">
+                <!-- Aca tendrias que mandarle la informacion guardada en publications que deberia ser un objeto con info de la DB -->
+                <blog-post title="Titulo" date="11/11/11"
+                description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
+                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
+                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!" 
+                [imgs]="['https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png','https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png']">
+                </blog-post>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="info-card p-3" style="margin-top:200px;min-width: fit-content;">
+                
+    <div class="d-flex align-items-center justify-content-start flex-wrap position-relative">
+        <h2 class="text-white">Habilidades</h2>
+        <div class="border col-6 ms-3" style="max-height: 1px;"></div>
+
+        <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+            <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
+        </button>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-around">
+        
+        <div *ngFor="let skill of skills">
+            <skill-card name="Name from DB" [progress]="100"></skill-card>
+        </div>
+    
+    </div>
+</div>

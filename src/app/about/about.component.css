@@ -1,13 +1,8 @@
-body{
-    font-family: 'Roboto', sans-serif;
-}
-
 .from-left{
     opacity: 0;
     transform: translateX(-100%);
     animation: appear 1.4s ease-out forwards;
 }
-
 
 .info-card{
     background:

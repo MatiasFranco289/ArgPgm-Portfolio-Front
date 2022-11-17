@@ -14,6 +14,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectsFormComponent } from './projects-form/projects-form.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { AboutCardComponent } from './about-card/about-card.component';
+import { StudiesComponent } from './studies/studies.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { SkillCardComponent } from './skill-card/skill-card.component';
+import { SkillsComponent } from './skills/skills.component';
+import { StudyCardComponent } from './study-card/study-card.component';
+import { ExperienceCardComponent } from './experience-card/experience-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,14 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     NavigationBarComponent,
     ProjectCardComponent,
     ProjectsFormComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    AboutCardComponent,
+    StudiesComponent,
+    ExperienceComponent,
+    SkillCardComponent,
+    SkillsComponent,
+    StudyCardComponent,
+    ExperienceCardComponent
   ],
   imports: [
     BrowserModule,

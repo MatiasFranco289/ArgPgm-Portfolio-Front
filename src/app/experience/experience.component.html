@@ -1,0 +1,18 @@
+<div class="p-3 text-center text-white info-card" style="margin-top:200px;">
+    <div class="position-relative">
+        <h2 class="mb-5">Experiencia</h2>
+        <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 start-0">
+            <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
+        </button>
+    </div>
+
+    <div *ngFor="let e of experiences">
+        <!-- Esta carta deberia rellenarla con informacion del objeto experiencia que te va a venir del padre -->
+        <experience-card name="Nombre trabajo" dateInit="ago. 2022" dateFinish="sept. 2022"
+        location="Provincia de Buenos Aires, Argentina" duration="2 meses"
+        description="Descripcion del rol que tuve en el trabajo.">
+        </experience-card>
+    </div>
+    
+
+</div>
