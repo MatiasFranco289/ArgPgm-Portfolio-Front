@@ -22,6 +22,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { StudyCardComponent } from './study-card/study-card.component';
 import { ExperienceCardComponent } from './experience-card/experience-card.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { BlogFormComponent } from './blog-form/blog-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DeleteModalComponent } from './delete-modal/delete-modal.component';
     SkillsComponent,
     StudyCardComponent,
     ExperienceCardComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    BlogFormComponent
   ],
   imports: [
     BrowserModule,
