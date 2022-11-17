@@ -21,6 +21,7 @@ import { SkillCardComponent } from './skill-card/skill-card.component';
 import { SkillsComponent } from './skills/skills.component';
 import { StudyCardComponent } from './study-card/study-card.component';
 import { ExperienceCardComponent } from './experience-card/experience-card.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ExperienceCardComponent } from './experience-card/experience-card.compo
     SkillCardComponent,
     SkillsComponent,
     StudyCardComponent,
-    ExperienceCardComponent
+    ExperienceCardComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
