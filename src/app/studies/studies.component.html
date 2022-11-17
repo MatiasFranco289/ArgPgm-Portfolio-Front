@@ -10,12 +10,13 @@
     <!-- Contenedor estudios -->
     <div class="p-3">
 
-        <div *ngFor="let s of studies">
+        <div *ngFor="let s of studies let i = index">
             <!-- Esto lo deberias rellenar con datos de s en realidad que va a ser un objeto que te va a dar el padre de este componente -->
             <study-card name="Nombre estudio" type="Tipo de formacion"
             dateInit="feb. 2022" dateFinish="feb. 2022" 
             description="Descripcion. (No la pongo ahora porque esto va a venir de la DB)"
-            img="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png">
+            img="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png"
+            [studyId]="i" (delete)="handleDelete($event)">
             </study-card>
         </div>
         

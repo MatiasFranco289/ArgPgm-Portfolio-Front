@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+interface Idelete{
+  id: number,
+  tablename: string
+}
 
 @Component({
   selector: 'study-card',
@@ -14,6 +19,8 @@ export class StudyCardComponent{
   @Input() dateFinish:string;
   @Input() description:string;
   @Input() img:string;
+  @Input() studyId:number;
+  @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
   protected faPen;
   protected faTrash;
 
@@ -26,6 +33,14 @@ export class StudyCardComponent{
     this.img = '';
     this.faPen = faPen;
     this.faTrash = faTrash;
+    this.studyId = 0;
+  }
+
+  handleDelete(): void{//Cuando tocan el boton de eliminar
+    this.delete.emit({//Emito un evento hacia mi componente padre con los datos de este estudio
+      id: this.studyId,//id del estudio a borrar
+      tablename: 'studies'//tabla donde se encuentra, en este caso studies 
+    });
   }
 
 }

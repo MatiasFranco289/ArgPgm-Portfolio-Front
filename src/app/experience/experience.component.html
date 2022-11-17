@@ -6,11 +6,12 @@
         </button>
     </div>
 
-    <div *ngFor="let e of experiences">
+    <div *ngFor="let e of experiences let i = index">
         <!-- Esta carta deberia rellenarla con informacion del objeto experiencia que te va a venir del padre -->
         <experience-card name="Nombre trabajo" dateInit="ago. 2022" dateFinish="sept. 2022"
         location="Provincia de Buenos Aires, Argentina" duration="2 meses"
-        description="Descripcion del rol que tuve en el trabajo.">
+        description="Descripcion del rol que tuve en el trabajo."
+        [idExperience]="i" (delete)="handleDelete($event)">
         </experience-card>
     </div>
     

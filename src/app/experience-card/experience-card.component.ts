@@ -1,10 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faPen, faTrash, faCircle } from '@fortawesome/free-solid-svg-icons';
+
+interface Idelete{
+  id: number,
+  tablename: string
+}
+
 @Component({
   selector: 'experience-card',
   templateUrl: './experience-card.component.html',
   styleUrls: ['./experience-card.component.css']
 })
+
 export class ExperienceCardComponent{
   
   @Input() name:string;
@@ -13,6 +20,8 @@ export class ExperienceCardComponent{
   @Input() location:string;
   @Input() description:string;
   @Input() duration:string;
+  @Input() idExperience:number;
+  @Output() delete = new EventEmitter<Idelete>();
   protected faPen;
   protected faTrash;
   protected faCircle;
@@ -27,7 +36,13 @@ export class ExperienceCardComponent{
     this.faPen = faPen;
     this.faTrash = faTrash;
     this.faCircle = faCircle;
+    this.idExperience = 0;
   }
 
-
+  handleDelete():void{
+    this.delete.emit({
+      id: this.idExperience,
+      tablename: 'experiences'
+    })
+  }
 }

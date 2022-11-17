@@ -23,16 +23,18 @@
             para crear cosas cada vez mejores.']"></about-card>
 
             <!-- Conocimientos -->
-            <skills [skills]="skills"></skills>
+            <skills [skills]="skills" (delete)="handleDelete($event)"></skills>
 
             <!-- Estudios -->
-            <studies [studies]="studies"></studies>
+            <studies [studies]="studies" (delete)="handleDelete($event)"></studies>
 
             <!-- Experiencia -->
-            <experience [experiences]="experiences"></experience>
+            <experience [experiences]="experiences" (delete)="handleDelete($event)"></experience>
 
             
         </div>
     </div>
+    <!-- Modal de borrado -->
+    <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
 
 </div>

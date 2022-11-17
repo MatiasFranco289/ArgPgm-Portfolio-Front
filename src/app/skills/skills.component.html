@@ -11,9 +11,13 @@
 
     <div class="d-flex flex-wrap justify-content-around">
         
-        <div *ngFor="let skill of skills">
-            <skill-card name="Name from DB" [progress]="100"></skill-card>
+        <div *ngFor="let skill of skills let i = index">
+            <!-- Aca tendrias que pasarle los datos reales de la DB -->
+            <skill-card name="Name from DB" [progress]="100" 
+            [skillId]="i" (delete) = "handleDelete($event)">
+            </skill-card>
         </div>
     
     </div>
+
 </div>

@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+interface Idelete{
+  id: number,
+  tablename: string
+}
 
 @Component({
   selector: 'studies',
@@ -8,6 +13,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class StudiesComponent {
   @Input() studies: Array<number>;
+  @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
+
   protected faPlus;
 
   constructor(){
@@ -15,4 +22,10 @@ export class StudiesComponent {
     this.faPlus = faPlus;
   }
 
+  handleDelete(deleteInfo: Idelete): void{//Cuando tocan el boton de eliminar
+    this.delete.emit({//Emito un evento hacia mi componente padre con los datos de este estudio
+      id: deleteInfo.id,//id del estudio a borrar
+      tablename: deleteInfo.tablename//tabla donde se encuentra, en este caso studies 
+    });
+  }
 }
