@@ -40,6 +40,8 @@ export class DeleteModalComponent{
     this.deletePhase = 'deleting';//Esto hace que apareza una ruedita de cargando
     setTimeout(() => {
       this.deletePhase = 'done';//Esto hace que aparezca un cartel que informa el exito o fallo
+      console.log(`Se ha borrado el objeto con los siguiente datos`);
+      console.log(`id: ${this.deleteInfo.id} table: ${this.deleteInfo.tablename}`);
     },1000);
   }
 }

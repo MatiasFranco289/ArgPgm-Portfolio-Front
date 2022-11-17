@@ -42,8 +42,6 @@ export class BlogPostComponent{
       id: this.postId,//id del post a borrar
       tablename: 'posts'//tabla donde se encuentra, en este caso posts 
     });
-
-    /* this.isOpenChange.emit(false);//Emito un evento avisando al padre que tiene que cambiar la variable que mantiene este form abierto a falso */
   }
 
 }

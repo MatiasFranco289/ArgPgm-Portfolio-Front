@@ -13,7 +13,7 @@
                 </button>
             </div>
 
-            <div *ngFor="let p of projects">
+            <div *ngFor="let p of projects let i = index">
                 <!-- Esto deberia rellenarlo con la info contenida en projects que deberia ser un objeto con info traida de la DB -->
                 <!-- Fijate si le podes poner un delay dependiendo del index a cada carta -->
                 <project-card name="Project name" dateInit="11/11/11" dateFinish="11/11/11" 
@@ -27,12 +27,13 @@
                 rem assumenda illo odio expedita dolorem placeat ab dolor accusantium enim earum 
                 velit ipsum ad aut aperiam, aspernatur nobis." projectLink = "www.github.com"
                 videoLink="www.youtube.com" deployLink="www.google.com" imgLink="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png"
-                [tecnologys]="['HTML,','CSS,','JS']"></project-card>
+                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="i" (delete) = "handleDelete($event)"></project-card>
             </div>
             
             
         </div>
     </div>
+    <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
 </div>
 
 <!-- (isOpenChange) es el evento emisor definido en el elemento hijo <projects-form>, asi que aca digo
