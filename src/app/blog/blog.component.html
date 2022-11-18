@@ -6,7 +6,7 @@
         <div class="position-relative">
             <h1>Blog</h1>
 
-            <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+            <button (click)="changePopUpState(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
                 <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
             </button>
         </div>
@@ -27,12 +27,12 @@
                 quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
                 Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!" 
                 [imgs]="['https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png','https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png']"
-                [postId] = "i" (delete) = "handleDelete($event)"><!-- CAMBIAR POST ID POR LA ID REAL Y NO UN INDEX -->
+                [postId] = "i" (delete) = "handleDelete($event)" (edit)="changePopUpState($event)"><!-- CAMBIAR POST ID POR LA ID REAL Y NO UN INDEX -->
                 </blog-post>
             </div>
         </div>
     </div>
 
     <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
-    <blog-form></blog-form>
+    <blog-form [popUpState]="popUpState" (close)="closePopUp()"></blog-form>
 </div>

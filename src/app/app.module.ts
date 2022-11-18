@@ -23,6 +23,7 @@ import { StudyCardComponent } from './study-card/study-card.component';
 import { ExperienceCardComponent } from './experience-card/experience-card.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { BlogFormComponent } from './blog-form/blog-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { BlogFormComponent } from './blog-form/blog-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

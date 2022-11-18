@@ -20,6 +20,7 @@ export class BlogPostComponent{
   @Input() imgs:Array<string>;
   @Input() postId:number;//Esto es la id del post, por ahora es solo el index del for del padre, pero mas adelante tenes que cambiarlo por el id real que tenga en la DB
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
+  @Output() edit: EventEmitter<number>;
 
   protected faTrash;
   protected faPen;
@@ -34,6 +35,7 @@ export class BlogPostComponent{
     this.faPen = faPen;
     this.faCalendar = faCalendar;
     this.postId = 0;
+    this.edit = new EventEmitter<number>;
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
@@ -44,4 +46,7 @@ export class BlogPostComponent{
     });
   }
 
+  editPost():void{
+    this.edit.emit(this.postId);
+  }
 }

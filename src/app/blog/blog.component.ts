@@ -15,11 +15,13 @@ export class BlogComponent {
   protected faPlus;
   protected publications: Array<number>;//Feel free to change this shit
   protected deleteModal:Idelete;
+  protected popUpState:number;
 
   constructor() { 
     this.faPlus = faPlus;
     this.publications = [0,1,2];
     this.deleteModal = {id:-1,tablename:''};
+    this.popUpState = -2;
   }
 
   handleDelete(deleteInfo:Idelete): void{//Esto es llamado desde alguno de los componente hijos de blog
@@ -27,4 +29,11 @@ export class BlogComponent {
     this.deleteModal = deleteInfo;//Guardo esto en el estado local para luego enviarselo al modal de eliminar
   }
 
+  changePopUpState(newState: number):void{
+    this.popUpState = newState;
+  }
+
+  closePopUp():void{
+    this.popUpState = -2;
+  }
 }
