@@ -17,6 +17,8 @@ export class SkillCardComponent{
   @Input() progress:number;
   @Input() skillId:number;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
+  @Output() editCreate: EventEmitter<number>;
+
   protected faPen;
   protected faTrash;
 
@@ -26,6 +28,7 @@ export class SkillCardComponent{
     this.faPen = faPen;
     this.faTrash = faTrash;
     this.skillId = 0;
+    this.editCreate = new EventEmitter<number>;
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
@@ -33,5 +36,9 @@ export class SkillCardComponent{
       id: this.skillId,//id de la skill a borrar
       tablename: 'skills'//tabla donde se encuentra, en este caso skills 
     });
+  }
+
+  openPopUp():void{
+    this.editCreate.emit(this.skillId);
   }
 }

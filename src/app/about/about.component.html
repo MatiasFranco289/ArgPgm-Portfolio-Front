@@ -7,23 +7,11 @@
         <div class="col-10">
             
             <!-- About -->
-            <about-card img="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png"
-            [description] = "['Hola soy matias un desarrollador web nacido en Argentina.
-            Desde siempre he disfrutado los temas relacionados con la tecnología.
-            Mi pasión nació desde muy pequeño cuando descubrí como hacer paginas usando 
-            html y un bloc de notas y desde entonces nunca he parado.',
-            'He creado infinidad de páginas, modelado en 3D, trabajado en algunos juegos 
-            y hasta he creado pequeños robots usando arduino.
-            Todo esto lo he hecho siempre como hobby y aprendiendo por mi cuenta, 
-            es por eso que me considero un autodidacta.',
-            'No fue hasta el 2022 que decidí dedicarme a esto de manera profesional y entre
-            un Bootcamp donde aprendí muchas cosas nuevas e interesantes.',
-            'Mi foco principal en estos días es desarrollar sitios webs únicos y 
-            sorprendentes y por eso me mantengo siempre en movimiento y aprendiendo
-            para crear cosas cada vez mejores.']"></about-card>
+            <about-card img="{{aboutImgUrl}}}"
+            description = "{{aboutDescription}}" (aboutPopUp)="handleEditAbout()"></about-card>
 
             <!-- Conocimientos -->
-            <skills [skills]="skills" (delete)="handleDelete($event)"></skills>
+            <skills [skills]="skills" (delete)="handleDelete($event)" (editCreate)="handleEditSkill($event)"></skills>
 
             <!-- Estudios -->
             <studies [studies]="studies" (delete)="handleDelete($event)"></studies>
@@ -36,5 +24,9 @@
     </div>
     <!-- Modal de borrado -->
     <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
-
+    <!-- Modal de skills -->
+    <skill-form [popUpState]="popUpSkill" (close)="handleEditSkill(-2)"></skill-form>
+    <!-- Modal de About -->
+    <about-form [popUpState]="popUpAbout" description="{{aboutDescription}}" imgUrl="{{aboutImgUrl}}" (close)="handleEditAbout()">
+    </about-form>
 </div>

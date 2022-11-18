@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,14 +8,19 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 })
 export class AboutCardComponent {
   @Input() img:string;
-  @Input() description: Array<string>;
+  @Input() description:string;
+  @Output() aboutPopUp: EventEmitter<boolean>;
   protected faPen;
 
   constructor(){
     this.img = '';
-    this.description = [];
+    this.description = '';
     this.faPen = faPen;
+    this.aboutPopUp = new EventEmitter<boolean>();
   }
 
+  handleAboutEdit(): void{
+    this.aboutPopUp.emit(true);
+  }
 
 }

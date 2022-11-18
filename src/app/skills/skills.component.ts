@@ -15,11 +15,13 @@ interface Idelete{
 export class SkillsComponent {
   @Input() skills: Array<number>; 
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
+  @Output() editCreate:EventEmitter<number>;
   protected faPlus;
 
   constructor(){
     this.skills = [];
     this.faPlus = faPlus;
+    this.editCreate = new EventEmitter<number>;
   }
 
   handleDelete(deleteInfo:Idelete): void{//Esto es llamado desde alguno de los componente hijos de skills
@@ -27,5 +29,9 @@ export class SkillsComponent {
       id: deleteInfo.id,//id de la skill a borrar
       tablename: deleteInfo.tablename//tabla donde se encuentra, en este caso skills 
     });
+  }
+
+  openPopUp(id:number):void{
+   this.editCreate.emit(id);
   }
 }

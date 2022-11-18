@@ -1,0 +1,45 @@
+<div *ngIf="popUpState" class="w-100 h-100 position-fixed top-0 start-0 d-flex justify-content-center align-items-center"
+style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwitch]="sendStatus">
+    <!-- Titulo descripcion imagen -->
+    <form *ngSwitchCase="''" [formGroup]="aboutForm" class="bg-dark d-flex flex-column text-white align-items-center p-3">
+
+        <div class="w-100 d-flex justify-content-end">
+            <button (click)="closePopUp()" class="btn btn-outline-danger">
+                <fa-icon [icon]="faXmark"></fa-icon>
+            </button>
+        </div>
+
+        <label for="description">Descripcion</label>
+        <textarea formControlName="description" name="description" id="description" cols="30" rows="10" style="outline:none;"
+        [ngClass]="{'border border-2 border-danger' : aboutForm.get('description')?.status=='INVALID' && 
+        aboutForm.get('description')?.touched}" placeholder="Ingrese una descripcion"></textarea>
+
+        <label for="imgUrl">Imagen</label>
+        <input formControlName="imgUrl" type="imgUrl" class="w-100" style="outline:none;"
+        [ngClass]="{'border border-2 border-danger' : aboutForm.get('imgUrl')?.status=='INVALID' && 
+        aboutForm.get('imgUrl')?.touched}" placeholder="Ingrese una url valida">
+
+        <button (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
+    </form>
+
+    <!-- popUp Error -->
+    <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center text-danger text-center shadow align-items-center" 
+    style="width:250px;">
+        <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
+        <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+    </div>
+
+    <!-- popUp Loading -->
+    <div *ngSwitchCase="'loading'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
+        <h4>Enviando</h4>
+        <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Enviando...</span>
+        </div>
+    </div>
+
+    <!-- popUp Exito -->
+    <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
+        <h4>Listo!</h4>
+        <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+    </div>
+</div>
