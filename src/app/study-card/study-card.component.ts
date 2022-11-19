@@ -21,6 +21,7 @@ export class StudyCardComponent{
   @Input() img:string;
   @Input() studyId:number;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
+  @Output() edit:EventEmitter<number>;
   protected faPen;
   protected faTrash;
 
@@ -34,6 +35,7 @@ export class StudyCardComponent{
     this.faPen = faPen;
     this.faTrash = faTrash;
     this.studyId = 0;
+    this.edit = new EventEmitter<number>();
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
@@ -43,4 +45,7 @@ export class StudyCardComponent{
     });
   }
 
+  handleEdit():void{
+    this.edit.emit(this.studyId);
+  }
 }

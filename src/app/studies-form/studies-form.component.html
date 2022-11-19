@@ -1,0 +1,68 @@
+<div class="w-100 h-100 position-fixed top-0 start-0 d-flex justify-content-center align-items-center"
+style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwitch]="sendState"
+*ngIf="popUpState!==-2">
+
+    <form *ngSwitchCase="''" [formGroup]="studiesForm" action="" class="bg-dark d-flex align-items-center flex-column p-3 text-white">
+
+        <div class="w-100 d-flex justify-content-end">
+            <button (click)="closePopUp()" class="btn btn-outline-danger">
+                <fa-icon [icon]="faXmark"></fa-icon>
+            </button>
+        </div>
+
+        <label for="name">Nombre</label>
+        <input formControlName="name" type="text" id="name" class="w-100" style="outline:none;" placeholder="Nombre del estudio"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('name')?.status=='INVALID' && 
+        studiesForm.get('name')?.touched}" >
+        
+        <label for="title">Titulo</label>
+        <input formControlName="title" type="text" id="title" class="w-100" style="outline:none;" placeholder="Tipo de estudio"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('title')?.status=='INVALID' && 
+        studiesForm.get('title')?.touched}" >
+
+        <label for="dateInit">Inicio</label>
+        <input formControlName="dateInit" type="date" id="dateInit" class="w-100" style="outline:none;" placeholder="Fecha inicio"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('dateInit')?.status=='INVALID' && 
+        studiesForm.get('dateInit')?.touched}" >
+
+        <label for="dateFinish">Fin</label>
+        <input formControlName="dateFinish" type="date" id="dateFinish" class="w-100" style="outline:none;" placeholder="Fecha fin"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('dateFinish')?.status=='INVALID' && 
+        studiesForm.get('dateFinish')?.touched}" >
+
+        <label for="imgUrl">Imagen</label>
+        <input formControlName="imgUrl" type="text" id="imgUrl" class="w-100" style="outline:none;" placeholder="Url"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('imgUrl')?.status=='INVALID' && 
+        studiesForm.get('imgUrl')?.touched}" >
+
+        <label for="description">Descripcion</label>
+        <textarea formControlName="description" id="description" class="w-100" cols="30" rows="10" style="outline:none;" placeholder="Descripcion"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('description')?.status=='INVALID' && 
+        studiesForm.get('description')?.touched}" >
+
+        </textarea>
+
+        <button (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
+    </form>
+
+    <!-- popUp Error -->
+    <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center text-danger text-center shadow align-items-center" 
+    style="width:250px;">
+        <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
+        <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+    </div>
+
+    <!-- popUp Loading -->
+    <div *ngSwitchCase="'loading'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
+        <h4>Enviando</h4>
+        <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Enviando...</span>
+        </div>
+    </div>
+
+    <!-- popUp Exito -->
+    <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
+        <h4>Listo!</h4>
+        <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 
     <div class="position-absolute top-0 end-0">
         <button class="btn btn-outline-dark my-2 my-sm-0">
-            <fa-icon [icon]="faPen" class="text-white"></fa-icon>
+            <fa-icon (click)="handleEdit()" [icon]="faPen" class="text-white"></fa-icon>
         </button>
         
         <button (click)="handleDelete()" class="btn btn-outline-dark my-2 my-sm-0">

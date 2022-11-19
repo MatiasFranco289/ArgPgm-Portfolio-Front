@@ -1,7 +1,7 @@
 <div class="p-3 text-center text-white info-card" style="margin-top:200px;">
     <div class="position-relative">
         <h2 class="mb-5">Experiencia</h2>
-        <button class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 start-0">
+        <button (click)="handleEdit(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 start-0">
             <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
         </button>
     </div>
@@ -11,7 +11,8 @@
         <experience-card name="Nombre trabajo" dateInit="ago. 2022" dateFinish="sept. 2022"
         location="Provincia de Buenos Aires, Argentina" duration="2 meses"
         description="Descripcion del rol que tuve en el trabajo."
-        [idExperience]="i" (delete)="handleDelete($event)">
+        [idExperience]="i" (delete)="handleDelete($event)"
+        (edit)="handleEdit($event)">
         </experience-card>
     </div>
     

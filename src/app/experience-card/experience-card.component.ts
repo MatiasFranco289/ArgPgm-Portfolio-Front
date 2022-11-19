@@ -22,6 +22,7 @@ export class ExperienceCardComponent{
   @Input() duration:string;
   @Input() idExperience:number;
   @Output() delete = new EventEmitter<Idelete>();
+  @Output() edit:EventEmitter<number>;
   protected faPen;
   protected faTrash;
   protected faCircle;
@@ -37,6 +38,7 @@ export class ExperienceCardComponent{
     this.faTrash = faTrash;
     this.faCircle = faCircle;
     this.idExperience = 0;
+    this.edit = new EventEmitter<number>();
   }
 
   handleDelete():void{
@@ -44,5 +46,9 @@ export class ExperienceCardComponent{
       id: this.idExperience,
       tablename: 'experiences'
     })
+  }
+
+  handleEdit():void{
+    this.edit.emit(this.idExperience);
   }
 }

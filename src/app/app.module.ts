@@ -26,6 +26,8 @@ import { BlogFormComponent } from './blog-form/blog-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SkillFormComponent } from './skill-form/skill-form.component';
 import { AboutFormComponent } from './about-form/about-form.component';
+import { StudiesFormComponent } from './studies-form/studies-form.component';
+import { ExperienceFormComponent } from './experience-form/experience-form.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AboutFormComponent } from './about-form/about-form.component';
     DeleteModalComponent,
     BlogFormComponent,
     SkillFormComponent,
-    AboutFormComponent
+    AboutFormComponent,
+    StudiesFormComponent,
+    ExperienceFormComponent
   ],
   imports: [
     BrowserModule,

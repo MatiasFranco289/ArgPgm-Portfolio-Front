@@ -15,11 +15,13 @@ interface Idelete{
 export class ExperienceComponent {
   @Input() experiences:Array<number>;
   @Output() delete = new EventEmitter<Idelete>();
+  @Output() edit:EventEmitter<number>;
   protected faPlus;
 
   constructor(){
     this.experiences = [];
     this.faPlus = faPlus;
+    this.edit = new EventEmitter<number>;
   }
 
   handleDelete(deleteInfo: Idelete){
@@ -29,4 +31,8 @@ export class ExperienceComponent {
     })
   }
 
+  handleEdit(id:number){
+    this.edit.emit(id);
+  }
+  
 }

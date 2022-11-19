@@ -14,19 +14,23 @@
             <skills [skills]="skills" (delete)="handleDelete($event)" (editCreate)="handleEditSkill($event)"></skills>
 
             <!-- Estudios -->
-            <studies [studies]="studies" (delete)="handleDelete($event)"></studies>
+            <studies [studies]="studies" (delete)="handleDelete($event)" (edit)="handleEditStudy($event)"></studies>
 
             <!-- Experiencia -->
-            <experience [experiences]="experiences" (delete)="handleDelete($event)"></experience>
+            <experience [experiences]="experiences" (delete)="handleDelete($event)" (edit)="handleEditExperience($event)"></experience>
 
             
         </div>
     </div>
-    <!-- Modal de borrado -->
+    <!-- Modal de Borrado -->
     <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
-    <!-- Modal de skills -->
+    <!-- Modal de Skills -->
     <skill-form [popUpState]="popUpSkill" (close)="handleEditSkill(-2)"></skill-form>
     <!-- Modal de About -->
     <about-form [popUpState]="popUpAbout" description="{{aboutDescription}}" imgUrl="{{aboutImgUrl}}" (close)="handleEditAbout()">
     </about-form>
+    <!-- Modal de Studies -->
+    <studies-form [popUpState]="popUpStudies" (close)="handleEditStudy(-2)"></studies-form>
+    <!-- Modal de Experiences -->
+    <experience-form [popUpState]="popUpExperiences" (close)="handleEditExperience($event)"></experience-form>
 </div>

@@ -22,8 +22,10 @@ export class AboutComponent {
   protected deleteModal: Idelete;
   protected popUpSkill:number;
   protected popUpAbout:boolean;
+  protected popUpStudies:number;
   protected aboutDescription:string;
   protected aboutImgUrl:string;
+  protected popUpExperiences:number;
   
   constructor(){
     this.skills = [0,1,2,3,4,5];
@@ -33,7 +35,6 @@ export class AboutComponent {
     this.popUpSkill = -2;
     this.popUpAbout = false;
     this.aboutDescription = `<p>Hola soy matias un desarrollador web nacido en Argentina. <br>
-
     Desde siempre he disfrutado los temas relacionados con la tecnología.
     Mi pasión nació desde muy pequeño cuando descubrí como hacer paginas usando
     html y un bloc de notas y desde entonces nunca he parado. <br> <br>
@@ -47,6 +48,8 @@ export class AboutComponent {
     sorprendentes y por eso me mantengo siempre en movimiento y aprendiendo
     para crear cosas cada vez mejores.</p>`;
     this.aboutImgUrl = 'https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png';
+    this.popUpStudies = -2;
+    this.popUpExperiences = -2;
   }
 
   handleDelete(deleteInfo:Idelete){
@@ -59,5 +62,13 @@ export class AboutComponent {
 
   handleEditAbout():void{
     this.popUpAbout = !this.popUpAbout;
+  }
+
+  handleEditStudy(id:number):void{
+    this.popUpStudies = id;
+  }
+
+  handleEditExperience(id:number):void{
+    this.popUpExperiences = id;
   }
 }
