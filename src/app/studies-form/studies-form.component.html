@@ -31,7 +31,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
         studiesForm.get('dateFinish')?.touched}" >
 
         <label for="imgUrl">Imagen</label>
-        <input formControlName="imgUrl" type="text" id="imgUrl" class="w-100" style="outline:none;" placeholder="Url"
+        <input formControlName="imgUrl" type="text" id="imgUrl" class="w-100" style="outline:none;" placeholder="Url .jpg o .png(Opcional)"
         [ngClass]="{'border border-2 border-danger' : studiesForm.get('imgUrl')?.status=='INVALID' && 
         studiesForm.get('imgUrl')?.touched}" >
 

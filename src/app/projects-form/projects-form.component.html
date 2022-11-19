@@ -1,110 +1,128 @@
-<div *ngIf="isOpen" class="position-fixed top-0 start-0 w-100 h-100 d-flex 
-justify-content-center align-items-center text-white z-index-3 overlay">
+<div *ngIf="popUpState!==-2" class="position-fixed top-0 start-0 w-100 h-100 d-flex 
+justify-content-center align-items-start text-white z-index-3 overlay"
+[ngSwitch]="sendState">
 
     <form action="" class="bg-dark d-flex flex-column p-3 position-relative container-sm shadow"
-    style="min-width:270px ;">
-        <h2 class="text-center">Crear proyecto</h2>
+    style="min-width:270px ;" [formGroup]="projectForm" *ngSwitchCase="''">
 
-        <button (click)="closeForm($event)" class="top-0 end-0 position-absolute btn btn-outline-danger m-1">
-            <fa-icon [icon]="faXmark" class="text-white fs-3"></fa-icon>
-        </button>
+        <div class="d-flex justify-content-end">
+            <button (click)="closeForm($event)" class="btn btn-outline-danger">
+                <fa-icon [icon]="faXmark" class="text-white fs-3"></fa-icon>
+            </button>
+        </div>
+        
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="name" style="min-width:130px;">Nombre </label>
-            <input class="col-6" type="text" id="name" style="min-width:250px;outline:none;" 
-            (keyup)="handleInputs($event)" [value]="inputValues.name">
-            
-            <div *ngIf="errors.name" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.name}}
-            </div>
+            <input formControlName="name" class="col-6" type="text" id="name" style="min-width:250px;outline:none;"
+            placeholder="Nombre del proyecto" 
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('name')?.status=='INVALID' && 
+            projectForm.get('name')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="fs-4" for="dateInit" style="min-width:130px;">Inicio </label>
             <input class="col-6" type="date" id="dateInit" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.dateInit">
-            
-            <div *ngIf="errors.dateInit" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.dateInit}}
-            </div>
+            placeholder="Fecha inicio" formControlName="dateInit"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('dateInit')?.status=='INVALID' && 
+            projectForm.get('dateInit')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="dateFinish" style="min-width:130px;">Fin </label>
             <input class="col-6" type="date" id="dateFinish" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.dateFinish">
-
-            <div *ngIf="errors.dateFinish" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.dateFinish}}
-            </div>
+            placeholder="Fecha fin" formControlName="dateFinish"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('dateFinish')?.status=='INVALID' && 
+            projectForm.get('dateFinish')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="description" style="min-width:130px;">Descripcion </label>
             <textarea class="col-6" type="text" id="description" style="min-width:250px;outline:none;min-height: 100px;"
-            (keyup)="handleInputs($event)" [value]="inputValues.description">
+            placeholder="Descripcion del proyecto" formControlName="description"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('description')?.status=='INVALID' && 
+            projectForm.get('description')?.touched}">
             </textarea>
-
-            <div *ngIf="errors.description" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.description}}
-            </div>
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
-            <label class="  fs-4" for="git" style="min-width:130px;">GitHub </label>
-            <input class="col-6" type="text" id="git" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.git">
-
-            <div *ngIf="errors.git" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.git}}
-            </div>
+            <label class="  fs-4" for="gitUrl" style="min-width:130px;">GitHub </label>
+            <input class="col-6" type="text" id="gitUrl" style="min-width:250px;outline:none;"
+            placeholder="GitHub url (Opcional)" formControlName="gitUrl"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('gitUrl')?.status=='INVALID' && 
+            projectForm.get('gitUrl')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
-            <label class="  fs-4" for="deploy" style="min-width:130px;">Deploy </label>
-            <input class="col-6" type="text" id="deploy" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.deploy">
-
-            <div *ngIf="errors.deploy" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.deploy}}
-            </div>
+            <label class="  fs-4" for="deployUrl" style="min-width:130px;">Deploy </label>
+            <input class="col-6" type="text" id="deployUrl" style="min-width:250px;outline:none;"
+            placeholder="Deploy url(Opcional)" formControlName="deployUrl"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('deployUrl')?.status=='INVALID' && 
+            projectForm.get('deployUrl')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
-            <label class="  fs-4" for="video" style="min-width:130px;">Video </label>
-            <input class="col-6" type="text" id="video" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.video">
-
-            <div *ngIf="errors.video" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.video}}
-            </div>
+            <label class="fs-4" for="videoUrl" style="min-width:130px;">Video </label>
+            <input class="col-6" type="text" id="videoUrl" style="min-width:250px;outline:none;"
+            placeholder="Video url(Opcional)" formControlName="videoUrl"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('videoUrl')?.status=='INVALID' && 
+            projectForm.get('videoUrl')?.touched}">
         </div>
         
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
-            <label class="  fs-4" for="img" style="min-width:130px;">Imagen </label>
-            <input class="col-6" type="text" id="img" style="min-width:250px;outline:none;"
-            (keyup)="handleInputs($event)" [value]="inputValues.img">
-
-            <div *ngIf="errors.img" class="bg-danger position-absolute end-0 top-0 p-1 rounded">
-                {{errors.img}}
-            </div>
+            <label class="  fs-4" for="imgUrl" style="min-width:130px;">Imagen </label>
+            <input class="col-6" type="text" id="imgUrl" style="min-width:250px;outline:none;"
+            placeholder="Url .png o .jpg(Opcional)" formControlName="imgUrl"
+            [ngClass]="{'border border-2 border-danger' : projectForm.get('imgUrl')?.status=='INVALID' && 
+            projectForm.get('imgUrl')?.touched}">
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="video" style="min-width:130px;">Tecnologias </label>
             <!-- Esto va a venir de la db -->
             <div class="col-6 d-flex flex-wrap" style="min-width:250px;outline:none;">
-                <button class="btn btn-outline-success m-2">HTML</button>
-                <button class="btn btn-outline-success m-2">CSS</button>
-                <button class="btn btn-outline-success m-2">BOOTSTRAP</button>
+                <div *ngFor="let item of tecnologys | keyvalue">
+                    <button class="btn btn-outline-success m-2" id="{{item.key}}"
+                    (click)="handleTecnology($event)"
+                        [ngClass]="{'btn-outline-danger text-white bg-danger':item.value}">
+                        {{item.key}}
+                    </button>
+                </div>
+
             </div>
         </div>
 
-
         <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-light my-2 w-25" type="submit">
+            <button (click)="sendForm()" class="btn btn-outline-success my-2 w-25" type="submit">
                 Enviar
             </button>
         </div>
     </form>
+
+      <!-- popUp Error -->
+      <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center 
+      text-danger text-center shadow align-items-center position-absolute start-50 top-50" 
+      style="width:250px;transform: translate(-50%,-50%);">
+          <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
+          <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+      </div>
+  
+      <!-- popUp Loading -->
+      <div *ngSwitchCase="'loading'" class="bg-dark p-3 d-flex flex-column justify-content-center
+      align-items-center text-white shadow position-absolute start-50 top-50" 
+      style="width:250px;transform: translate(-50%,-50%);">
+          <h4>Enviando</h4>
+          <div class="spinner-border text-danger" role="status">
+              <span class="sr-only">Enviando...</span>
+          </div>
+      </div>
+  
+      <!-- popUp Exito -->
+      <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center
+       align-items-center text-white shadow position-absolute start-50 top-50"
+       style="width:250px;transform: translate(-50%,-50%);">
+          <h4>Listo!</h4>
+          <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+      </div>
+  
 </div>

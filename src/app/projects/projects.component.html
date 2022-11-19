@@ -8,7 +8,7 @@
         <div class="mt-5">
 
             <div class="position-absolute top-0 start-0 p-2">
-                <button (click)="handleCreate()" class="btn btn-outline-success my-2 my-sm-0">
+                <button (click)="handleEdit(-1)" class="btn btn-outline-success my-2 my-sm-0">
                     <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
                 </button>
             </div>
@@ -27,16 +27,19 @@
                 rem assumenda illo odio expedita dolorem placeat ab dolor accusantium enim earum 
                 velit ipsum ad aut aperiam, aspernatur nobis." projectLink = "www.github.com"
                 videoLink="www.youtube.com" deployLink="www.google.com" imgLink="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png"
-                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="i" (delete) = "handleDelete($event)"></project-card>
+                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="i" 
+                (delete) = "handleDelete($event)"
+                (edit)="handleEdit($event)">
+            </project-card>
             </div>
             
             
         </div>
     </div>
-    <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
+    <delete-modal [deleteInfo]="deleteModal" (delete)="handleDelete($event)"></delete-modal>
 </div>
 
 <!-- (isOpenChange) es el evento emisor definido en el elemento hijo <projects-form>, asi que aca digo
 que cuando ese evento sea emitido por el componente hijo va a llamar a el metodo handleCreate() de este
 componente que seria el padre -->
-<projects-form [isOpen] = "createOpen" (isOpenChange)="handleCreate()"></projects-form>
+<projects-form [popUpState]="editPopUp" (close)="handleEdit(-2)"></projects-form>

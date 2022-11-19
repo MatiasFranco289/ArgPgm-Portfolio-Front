@@ -14,23 +14,24 @@ interface Idelete{
 
 export class ProjectsComponent{
   protected faPlus;
-  protected createOpen:boolean;
-  protected projects:Array<number>;//Feel fre to change this shit
+  protected projects:Array<number>;//Feel free to change this shit
   protected deleteModal:Idelete;
+  protected editPopUp:number;
 
   constructor(){
     this.faPlus = faPlus;
-    this.createOpen = false;
     this.projects = [1,2,3];
     this.deleteModal = {id:-1,tablename:''}
+    this.editPopUp = -2;
   }
   
-  handleCreate(): void{
-    this.createOpen = !this.createOpen;
-  }
 
   handleDelete(deleteInfo:Idelete):void{
     this.deleteModal = deleteInfo;
     console.log('Borrar proyecto llamado')
+  }
+
+  handleEdit(id: number){
+    this.editPopUp = id;
   }
 }

@@ -25,7 +25,7 @@ export class ProjectCardComponent {
   @Input() tecnologys:Array<string>;
   @Input() projectId:number;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
-  
+  @Output() edit: EventEmitter<number>;
   protected faGithub;
   protected faLink;
   protected faYoutube;
@@ -57,6 +57,7 @@ export class ProjectCardComponent {
     this.faTrash = faTrash;
     this.logged = true;
     this.projectId = 0;
+    this.edit = new EventEmitter<number>();
   }
 
 
@@ -66,5 +67,9 @@ export class ProjectCardComponent {
       id: this.projectId,//id del proyecto a borrar
       tablename: 'projects'//tabla donde se encuentra, en este caso projects 
     });
+  }
+
+  handleEdit():void{
+    this.edit.emit(this.projectId);
   }
 }
