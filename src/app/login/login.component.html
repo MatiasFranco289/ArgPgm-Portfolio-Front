@@ -1,14 +1,34 @@
-<div class="bg-dark d-flex justify-content-center align-items-center" style="min-height:100vh;">
+<div class="bg-dark d-flex justify-content-center align-items-center" style="min-height:100vh;"
+[ngSwitch]="sendState">
     <!-- Cuerpo principal -->
-    <form action="" class="text-white bg-secondary p-4 d-flex flex-column text-center">
+    <form *ngSwitchCase="''" class="text-white bg-secondary p-4 d-flex flex-column text-center" [formGroup]="loginForm">
         <label for="email">Usuario: </label>
-        <input type="email" name="email" id="email" style="outline:none;">
+        <input formControlName="username" type="email" name="username" id="username" style="outline:none;"
+        [ngClass]="{'border border-2 border-danger' : loginForm.get('username')?.status=='INVALID' && 
+        loginForm.get('username')?.touched}" placeholder="Ingrese un mail valido">
 
-        <label for="password">Contraña: </label>
-        <input type="password" name="password" id="password" style="outline:none;">
+        <label for="password">Contraseña: </label>
+        <input formControlName="pass" type="password" name="pass" id="pass" style="outline:none;"
+        [ngClass]="{'border border-2 border-danger' : loginForm.get('pass')?.status=='INVALID' && 
+        loginForm.get('pass')?.touched}" placeholder="Al menos 6 caracteres">
 
-        <button type="submit" class="btn btn-outline-dark mt-3">
+        <button (click)="sendForm()" type="submit" class="btn btn-outline-dark mt-3">
             Conectarse
         </button>
     </form>
+
+    <!-- popUp Error -->
+    <div *ngSwitchCase="'error'" class="bg-secondary p-3 d-flex flex-column justify-content-center text-white text-center shadow align-items-center" 
+    style="width:250px;">
+        <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
+        <button (click)="closeError()" class="btn btn-outline-dark">Ok</button>
+    </div>
+
+    <!-- popUp Loading -->
+    <div *ngSwitchCase="'loading'" class="bg-secondary p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
+        <h4>Enviando</h4>
+        <div class="spinner-border text-white" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
 </div>

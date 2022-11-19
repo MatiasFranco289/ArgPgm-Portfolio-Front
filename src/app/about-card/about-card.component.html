@@ -15,11 +15,9 @@
     
     <div class="d-flex flex-wrap justify-content-center">
         <div class="col-8 text-white">
-            <div [innerHTML]="description"></div>
-            <!-- <p class="text-white">{{description}}</p> -->
-            <!-- <div *ngFor="let p of description">
+            <div *ngFor="let p of descriptionSegmented">
                 <p class="text-white">{{p}}</p>
-            </div> -->
+            </div>
         </div>
 
         <div class="col-4 d-flex align-items-center justify-content-center" style="min-width:280px;">

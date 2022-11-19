@@ -34,19 +34,14 @@ export class AboutComponent {
     this.deleteModal = {id:-1,tablename:''};
     this.popUpSkill = -2;
     this.popUpAbout = false;
-    this.aboutDescription = `<p>Hola soy matias un desarrollador web nacido en Argentina. <br>
-    Desde siempre he disfrutado los temas relacionados con la tecnología.
-    Mi pasión nació desde muy pequeño cuando descubrí como hacer paginas usando
-    html y un bloc de notas y desde entonces nunca he parado. <br> <br>
-    He creado infinidad de páginas, modelado en 3D, trabajado en algunos juegos 
-    y hasta he creado pequeños robots usando arduino.
-    Todo esto lo he hecho siempre como hobby y aprendiendo por mi cuenta,
-    es por eso que me considero un autodidacta.<br> <br>
-    No fue hasta el 2022 que decidí dedicarme a esto de manera profesional y entre
-    un Bootcamp donde aprendí muchas cosas nuevas e interesantes. <br>
-    Mi foco principal en estos días es desarrollar sitios webs únicos y 
-    sorprendentes y por eso me mantengo siempre en movimiento y aprendiendo
-    para crear cosas cada vez mejores.</p>`;
+    this.aboutDescription =
+    `Hola soy matias un desarrollador web nacido en Argentina.Desde siempre he disfrutado los temas relacionados con la tecnología.
+
+    Mi pasión nació desde muy pequeño cuando descubrí como hacer paginas usando html y un bloc de notas y desde entonces nunca he parado.He creado infinidad de páginas, modelado en 3D, trabajado en algunos juegos y hasta he creado pequeños robots usando arduino.
+  
+    Todo esto lo he hecho siempre como hobby y aprendiendo por mi cuenta, es por eso que me considero un autodidacta.No fue hasta el 2022 que decidí dedicarme a esto de manera profesional y entre un Bootcamp donde aprendí muchas cosas nuevas e interesantes.
+
+    Mi foco principal en estos días es desarrollar sitios webs únicos y sorprendentes y por eso me mantengo siempre en movimiento y aprendiendo para crear cosas cada vez mejores.`;
     this.aboutImgUrl = 'https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png';
     this.popUpStudies = -2;
     this.popUpExperiences = -2;
