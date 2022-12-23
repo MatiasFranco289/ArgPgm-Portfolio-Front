@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output,EventEmitter } from '@angular/core';
 
 interface Idelete{
@@ -16,7 +17,7 @@ export class DeleteModalComponent{
   @Output() delete = new EventEmitter<Idelete>();
   protected deletePhase:string;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.deleteInfo = {id:-1,tablename:''}
     this.deletePhase = '';
   }
@@ -34,14 +35,11 @@ export class DeleteModalComponent{
     //Aca tenes que realizar el borrado de la base de datos
     //En this.deleteInfo tenes un objeto {id: number, tablename: string}
     //Que contiene el id del item a borrar y el nombre de la tabla 
-    //Lo que hay aca abajo es solo para simular asincronisidad
-    //Cambialo cuando implementes lo de la DB
-
     this.deletePhase = 'deleting';//Esto hace que apareza una ruedita de cargando
-    setTimeout(() => {
+
+    this.http.delete(`http://localhost:8080/${this.deleteInfo.tablename}/${this.deleteInfo.id}`)
+    .subscribe((res) => {
       this.deletePhase = 'done';//Esto hace que aparezca un cartel que informa el exito o fallo
-      console.log(`Se ha borrado el objeto con los siguiente datos`);
-      console.log(`id: ${this.deleteInfo.id} table: ${this.deleteInfo.tablename}`);
-    },1000);
+    })
   }
 }

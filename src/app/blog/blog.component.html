@@ -16,18 +16,10 @@
         <div class="position-relative">
             <div *ngFor="let p of publications let i = index">
                 <!-- Aca tendrias que mandarle la informacion guardada en publications que deberia ser un objeto con info de la DB -->
-                <blog-post title="Titulo" date="11/11/11"
-                description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit 
-                quo perferendis ipsum dolores, porro nobis quidem iure harum tempore?
-                Libero quia iure voluptas magni aliquam cum ut earum autem laudantium!" 
-                [imgs]="['https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png','https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png']"
-                [postId] = "i" (delete) = "handleDelete($event)" (edit)="changePopUpState($event)"><!-- CAMBIAR POST ID POR LA ID REAL Y NO UN INDEX -->
+                <blog-post title={{p.title}} date={{p.createdAt}}
+                description={{p.description}}
+                [imgs]="p.images"
+                [postId] = "p.id_post" (delete) = "handleDelete($event)" (edit)="changePopUpState($event)">
                 </blog-post>
             </div>
         </div>

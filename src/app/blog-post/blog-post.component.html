@@ -25,8 +25,8 @@
         <p>{{description}}</p>
 
         <div class="d-flex justify-content-around flex-wrap">
-            <a *ngFor="let i of imgs" href="{{i}}" target="_blank" class="m-3" style="width:40%;min-width: 200px;">
-                <img src="{{i}}" class="post-image" alt="postImage.png">
+            <a *ngFor="let i of imgs" href="{{i.imgUrl}}" target="_blank" class="m-3" style="width:40%;min-width: 200px;">
+                <img src="{{i.imgUrl}}" class="post-image" alt="postImage.png">
             </a>
         </div>
     </div>

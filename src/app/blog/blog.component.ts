@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 interface Idelete{
@@ -6,22 +6,43 @@ interface Idelete{
   tablename: string
 }
 
+interface IdbImage{
+  id_image: number,
+  imgUrl: string
+}
+
+interface Iblog{
+  createdAt: Date,
+  description: string,
+  id_post: number,
+  images: Array<IdbImage>,
+  title: string
+}
+
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.css']
 })
-export class BlogComponent {
+export class BlogComponent implements OnInit {
   protected faPlus;
-  protected publications: Array<number>;//Feel free to change this shit
+  protected publications: Array<Iblog>;
   protected deleteModal:Idelete;
   protected popUpState:number;
 
   constructor() { 
     this.faPlus = faPlus;
-    this.publications = [0,1,2];
+    this.publications = [];
     this.deleteModal = {id:-1,tablename:''};
     this.popUpState = -2;
+  }
+
+  ngOnInit(): void {
+      fetch("http://localhost:8080/posts")
+      .then(data => data.json())
+      .then(response => {
+        this.publications = response;
+      })
   }
 
   handleDelete(deleteInfo:Idelete): void{//Esto es llamado desde alguno de los componente hijos de blog

@@ -6,6 +6,11 @@ interface Idelete{
   tablename: string
 }
 
+interface IdbImage{
+  id_image: number,
+  imgUrl: string
+}
+
 @Component({
   selector: 'blog-post',
   templateUrl: './blog-post.component.html',
@@ -17,7 +22,7 @@ export class BlogPostComponent{
   @Input() title:string;
   @Input() date:string;
   @Input() description:string;
-  @Input() imgs:Array<string>;
+  @Input() imgs:Array<IdbImage>;
   @Input() postId:number;//Esto es la id del post, por ahora es solo el index del for del padre, pero mas adelante tenes que cambiarlo por el id real que tenga en la DB
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
   @Output() edit: EventEmitter<number>;
@@ -39,7 +44,6 @@ export class BlogPostComponent{
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
-    console.log('Que tocas la reconcha de tu hermana');
     this.delete.emit({//Emito un evento hacia mi componente padre con los datos de este blog
       id: this.postId,//id del post a borrar
       tablename: 'posts'//tabla donde se encuentra, en este caso posts 

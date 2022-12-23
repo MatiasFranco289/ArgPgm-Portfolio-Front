@@ -32,7 +32,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
                     <input type="text" id="{{'url'+i}}" formControlName="{{'url'+i}}" class="w-100" style="outline:none;"
                     placeholder="Ingrese url .png o .jpg"
                     [ngClass]="{'border border-2 border-danger' : blogForm.get('url'+i)?.status=='INVALID' && 
-                    blogForm.get('url'+i)?.touched}">
+                    blogForm.get('url'+i)?.touched}" [readOnly]="readOnly[i]">
 
                     <button *ngIf="i === imgLinks.length-1" (click)="handleDeleteUrl()" class="btn btn-outline-danger mx-2">
                         <fa-icon [icon]="faXmark"></fa-icon>
@@ -46,7 +46,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
             </button>
         </div>
 
-        <button (click)="sendForm()" class="btn btn-outline-success m-3">Enviar</button>
+        <button type="button" (click)="sendForm()" class="btn btn-outline-success m-3">Enviar</button>
     </form>
 
     <!-- popUp Error -->

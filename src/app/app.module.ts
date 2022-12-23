@@ -28,6 +28,7 @@ import { SkillFormComponent } from './skill-form/skill-form.component';
 import { AboutFormComponent } from './about-form/about-form.component';
 import { StudiesFormComponent } from './studies-form/studies-form.component';
 import { ExperienceFormComponent } from './experience-form/experience-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ExperienceFormComponent } from './experience-form/experience-form.compo
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
