@@ -6,6 +6,16 @@ interface Idelete{
   tablename: string
 }
 
+interface Istudy{
+  id_study: number,
+  description: string,
+  dateInit: string,
+  dateFinish: string,
+  title: string,
+  typeName: string,
+  typeId: number
+}
+
 @Component({
   selector: 'study-card',
   templateUrl: './study-card.component.html',
@@ -13,39 +23,37 @@ interface Idelete{
 })
 export class StudyCardComponent{
   
-  @Input() name:string;
-  @Input() type:string;
-  @Input() dateInit:string;
-  @Input() dateFinish:string;
-  @Input() description:string;
+  @Input() studyInfo: Istudy;
   @Input() img:string;
-  @Input() studyId:number;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
-  @Output() edit:EventEmitter<number>;
+  @Output() edit:EventEmitter<Istudy>;
   protected faPen;
   protected faTrash;
 
   constructor(){
-    this.name = '';
-    this.type = '';
-    this.dateInit = '';
-    this.dateFinish = '';
-    this.description = '';
     this.img = '';
     this.faPen = faPen;
     this.faTrash = faTrash;
-    this.studyId = 0;
-    this.edit = new EventEmitter<number>();
+    this.studyInfo = {
+      id_study: -2,
+      description: "Loading",
+      dateInit: "Loading",
+      dateFinish: "Loading",
+      title: "Loading",
+      typeName: "Loading",
+      typeId: -2
+    }
+    this.edit = new EventEmitter<Istudy>();
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
     this.delete.emit({//Emito un evento hacia mi componente padre con los datos de este estudio
-      id: this.studyId,//id del estudio a borrar
+      id: this.studyInfo.id_study,//id del estudio a borrar
       tablename: 'studies'//tabla donde se encuentra, en este caso studies 
     });
   }
 
   handleEdit():void{
-    this.edit.emit(this.studyId);
+    this.edit.emit(this.studyInfo);
   }
 }

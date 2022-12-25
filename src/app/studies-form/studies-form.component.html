@@ -1,11 +1,11 @@
 <div class="w-100 h-100 position-fixed top-0 start-0 d-flex justify-content-center align-items-center"
 style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwitch]="sendState"
-*ngIf="popUpState!==-2">
+*ngIf="popUpState.id_study!==-2">
 
     <form *ngSwitchCase="''" [formGroup]="studiesForm" action="" class="bg-dark d-flex align-items-center flex-column p-3 text-white">
 
         <div class="w-100 d-flex justify-content-end">
-            <button (click)="closePopUp()" class="btn btn-outline-danger">
+            <button type="button" (click)="closePopUp()" class="btn btn-outline-danger">
                 <fa-icon [icon]="faXmark"></fa-icon>
             </button>
         </div>
@@ -15,10 +15,13 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
         [ngClass]="{'border border-2 border-danger' : studiesForm.get('name')?.status=='INVALID' && 
         studiesForm.get('name')?.touched}" >
         
-        <label for="title">Titulo</label>
-        <input formControlName="title" type="text" id="title" class="w-100" style="outline:none;" placeholder="Tipo de estudio"
-        [ngClass]="{'border border-2 border-danger' : studiesForm.get('title')?.status=='INVALID' && 
-        studiesForm.get('title')?.touched}" >
+        <label for="title">Tipo</label>
+        <select formControlName="type" id="type" class="w-100" style="outline:none;"
+        [ngClass]="{'border border-2 border-danger' : studiesForm.get('type')?.status=='INVALID' && 
+        studiesForm.get('type')?.touched}">
+            <option value="">Seleccione un tipo</option>
+            <option *ngFor="let type of typeStudies" [value]="type.id_type">{{type.name}}</option>
+        </select>
 
         <label for="dateInit">Inicio</label>
         <input formControlName="dateInit" type="date" id="dateInit" class="w-100" style="outline:none;" placeholder="Fecha inicio"
@@ -30,11 +33,6 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
         [ngClass]="{'border border-2 border-danger' : studiesForm.get('dateFinish')?.status=='INVALID' && 
         studiesForm.get('dateFinish')?.touched}" >
 
-        <label for="imgUrl">Imagen</label>
-        <input formControlName="imgUrl" type="text" id="imgUrl" class="w-100" style="outline:none;" placeholder="Url .jpg o .png(Opcional)"
-        [ngClass]="{'border border-2 border-danger' : studiesForm.get('imgUrl')?.status=='INVALID' && 
-        studiesForm.get('imgUrl')?.touched}" >
-
         <label for="description">Descripcion</label>
         <textarea formControlName="description" id="description" class="w-100" cols="30" rows="10" style="outline:none;" placeholder="Descripcion"
         [ngClass]="{'border border-2 border-danger' : studiesForm.get('description')?.status=='INVALID' && 
@@ -42,14 +40,14 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
 
         </textarea>
 
-        <button (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
+        <button type="button" (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
     </form>
 
     <!-- popUp Error -->
     <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center text-danger text-center shadow align-items-center" 
     style="width:250px;">
         <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
-        <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="closeError()" class="btn btn-outline-success">Ok</button>
     </div>
 
     <!-- popUp Loading -->
@@ -63,6 +61,6 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
     <!-- popUp Exito -->
     <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
         <h4>Listo!</h4>
-        <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="reload()" class="btn btn-outline-success">Ok</button>
     </div>
 </div>

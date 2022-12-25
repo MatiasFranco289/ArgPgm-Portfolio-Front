@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,Validators,FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'about-form',
@@ -8,7 +9,7 @@ import { FormGroup,Validators,FormControl } from '@angular/forms';
   styleUrls: ['./about-form.component.css']
 })
 
-export class AboutFormComponent implements OnInit{
+export class AboutFormComponent implements OnChanges{
   @Input() popUpState:boolean;
   @Input() description:string;
   @Input() imgUrl:string;
@@ -18,7 +19,7 @@ export class AboutFormComponent implements OnInit{
   protected aboutForm:FormGroup;
   protected sendStatus:string;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.popUpState = false;
     this.faXmark = faXmark;
     this.description = '';
@@ -31,7 +32,7 @@ export class AboutFormComponent implements OnInit{
     this.close = new EventEmitter<boolean>;
   }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     //Updateo los valores por defectos con los datos que me manda el padre, que deberian venir de la DB
     this.aboutForm.get('description')?.setValue(this.description);
     this.aboutForm.get('imgUrl')?.setValue(this.imgUrl);
@@ -42,9 +43,22 @@ export class AboutFormComponent implements OnInit{
     //Hacer el envio aca
     this.sendStatus = 'loading';
 
-    setTimeout(() => {
-      this.sendStatus = 'done';
-    },1000)
+    let newAbout = {
+      id_post: 1,
+      title: "About me",
+      description: this.aboutForm.value.description,
+      images: [{
+        id_image: 1,
+        imgUrl: this.aboutForm.value.imgUrl
+      }]
+    }
+    
+    this.http.post("http://localhost:8080/posts", newAbout)
+    .subscribe({
+      next: () => this.sendStatus = 'done',
+      error: (err) => console.log("An unexpected error has ocurred while trying to update the About info.")
+    });
+
     return '';
   }
 

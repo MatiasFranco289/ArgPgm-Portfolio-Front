@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 interface Idelete{
   id: number,
@@ -11,6 +12,16 @@ interface Iskill{
   percentaje: number
 }
 
+interface Istudy{
+  id_study: number,
+  description: string,
+  dateInit: string,
+  dateFinish: string,
+  title: string,
+  typeName: string,
+  typeId: number
+}
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -20,7 +31,7 @@ interface Iskill{
 //IMPORTANTE: 
 //CUANDO CONECTES ESTO CON LA DB, ESTE ES EL COMPONENTE DE HACER LOS LLAMADOS GET Y ENVIAR LA INFORMACION A SUS HIJOS
 
-export class AboutComponent {
+export class AboutComponent implements OnInit{
   //Feel free to change this shit, solo lo pongo asi para sacar el length y renderizar por ahora
   protected skills: Array<number>;//Esto va a venir de la DB y van a ser todas mis skills
   protected studies: Array<number>;
@@ -28,29 +39,43 @@ export class AboutComponent {
   protected deleteModal: Idelete;
   protected popUpSkill:Iskill;
   protected popUpAbout:boolean;
-  protected popUpStudies:number;
+  protected popUpStudies:Istudy;
   protected aboutDescription:string;
   protected aboutImgUrl:string;
   protected popUpExperiences:number;
   
-  constructor(){
+  constructor(private http: HttpClient){
     this.skills = [0,1,2,3,4,5];
     this.studies = [0,1,2];
     this.experiences = [0,1,2];
     this.deleteModal = {id:-1,tablename:''};
     this.popUpSkill = {id_skill:-2,skill_name:'',percentaje:0};
     this.popUpAbout = false;
-    this.aboutDescription =
-    `Hola soy matias un desarrollador web nacido en Argentina.Desde siempre he disfrutado los temas relacionados con la tecnología.
-
-    Mi pasión nació desde muy pequeño cuando descubrí como hacer paginas usando html y un bloc de notas y desde entonces nunca he parado.He creado infinidad de páginas, modelado en 3D, trabajado en algunos juegos y hasta he creado pequeños robots usando arduino.
-  
-    Todo esto lo he hecho siempre como hobby y aprendiendo por mi cuenta, es por eso que me considero un autodidacta.No fue hasta el 2022 que decidí dedicarme a esto de manera profesional y entre un Bootcamp donde aprendí muchas cosas nuevas e interesantes.
-
-    Mi foco principal en estos días es desarrollar sitios webs únicos y sorprendentes y por eso me mantengo siempre en movimiento y aprendiendo para crear cosas cada vez mejores.`;
+    this.aboutDescription = "Loading.."
     this.aboutImgUrl = 'https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png';
-    this.popUpStudies = -2;
+    this.popUpStudies = {
+      id_study: -2,
+      description: "",
+      dateInit: "",
+      dateFinish: "",
+      title: "",
+      typeName: "",
+      typeId: -2
+    };
     this.popUpExperiences = -2;
+  }
+
+  ngOnInit(): void {
+    //La informacion de la carta de about esta contenida es un simple post, igual que los demas de blogs.
+    //Es importante para que funcione que ese post nunca sea eliminado y su id siempre sea "1"
+    this.http.get("http://localhost:8080/posts/1")
+    .subscribe({
+      next: (res: any) => {
+        this.aboutDescription = res.description;
+        this.aboutImgUrl = res.images[0].imgUrl;
+      },
+      error: (err) => console.log("An unexpected error has ocurred while trying to get data for About.")
+    });
   }
 
   handleDelete(deleteInfo:Idelete){
@@ -65,8 +90,8 @@ export class AboutComponent {
     this.popUpAbout = !this.popUpAbout;
   }
 
-  handleEditStudy(id:number):void{
-    this.popUpStudies = id;
+  handleEditStudy(studyInfo: Istudy):void{
+    this.popUpStudies = studyInfo;
   }
 
   handleEditExperience(id:number):void{

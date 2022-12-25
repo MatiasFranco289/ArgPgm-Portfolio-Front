@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,7 +6,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './about-card.component.html',
   styleUrls: ['./about-card.component.css']
 })
-export class AboutCardComponent implements OnInit {
+export class AboutCardComponent implements OnChanges {
   @Input() img:string;
   @Input() description:string;
   @Output() aboutPopUp: EventEmitter<boolean>;
@@ -21,7 +21,7 @@ export class AboutCardComponent implements OnInit {
     this.descriptionSegmented = [];
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.descriptionSegmented = this.description.split(/\r?\n/);
   }
 

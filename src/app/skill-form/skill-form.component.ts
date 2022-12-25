@@ -1,8 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
 
 interface Iskill{
   id_skill?: number,
@@ -50,20 +49,12 @@ export class SkillFormComponent implements OnChanges{
     {skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}:
     {id_skill: this.popUpState.id_skill, skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}
 
-    /* this.http.post('http://localhost:8080/skills', newSkill)
-    .subscribe((res) => {
-      console.log(res);
-      this.sendState = 'done';
-    }) */
-
     this.http.post('http://localhost:8080/skills', newSkill)
-    .subscribe((res) => {
-      console.log(res);
-      this.sendState = 'done';
-    },
-    (error) => {
-      console.log("Hubo un error we "+error);
-    })
+    .subscribe({
+      next: (res) => this.sendState = "done",
+      error: (err) => this.sendState = "error",
+    });
+
 
     return '';
   }

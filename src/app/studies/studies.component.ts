@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface Idelete{
@@ -6,21 +7,54 @@ interface Idelete{
   tablename: string
 }
 
+interface Istudy{
+  id_study: number,
+  description: string,
+  dateInit: string,
+  dateFinish: string,
+  title: string,
+  typeName: string,
+  typeId: number
+}
+
 @Component({
   selector: 'studies',
   templateUrl: './studies.component.html',
   styleUrls: ['./studies.component.css']
 })
-export class StudiesComponent {
-  @Input() studies: Array<number>;
+export class StudiesComponent implements OnInit{
+  studies: Array<Istudy>;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
-  @Output() edit:EventEmitter<number>;
+  @Output() edit:EventEmitter<Istudy>;
   protected faPlus;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.studies = [];
     this.faPlus = faPlus;
-    this.edit = new EventEmitter<number>();
+    this.edit = new EventEmitter<Istudy>();
+  }
+
+  ngOnInit(): void {
+    this.http.get('http://localhost:8080/types')
+    .subscribe({
+      next: (res: any) => {
+        res.forEach((studyType: any) => {
+          studyType.studies.forEach((study: any) => {
+            this.studies.push({
+              id_study: study.id_study,
+              description: study.decription,
+              dateInit: study.dateInit,
+              dateFinish: study.dateFinish,
+              title: study.title,
+              typeName: studyType.name,
+              typeId: studyType.id_type
+            })
+          })
+        })
+
+      },
+      error: (err) => console.log("An unexpected error has ocurred while trying to get studies.")
+    });
   }
 
   handleDelete(deleteInfo: Idelete): void{//Cuando tocan el boton de eliminar
@@ -30,11 +64,19 @@ export class StudiesComponent {
     });
   }
 
-  handleEdit(editInfo: number):void{
+  handleEdit(editInfo: Istudy):void{
     this.edit.emit(editInfo);
   }
 
   handleAddStudy(){
-    this.edit.emit(-1);
+    this.edit.emit({
+      id_study: -1,
+      description: "",
+      dateInit: "",
+      dateFinish: "",
+      title: "",
+      typeName: "",
+      typeId: -1
+    });
   }
 }

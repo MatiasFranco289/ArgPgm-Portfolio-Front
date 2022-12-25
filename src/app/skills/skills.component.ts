@@ -35,7 +35,6 @@ export class SkillsComponent implements OnInit{
     this.http.get('http://localhost:8080/skills')
     .subscribe((res) => {
       this.skills = res as Array<Iskill>;
-      console.log(this.skills);
     })
   }
 
