@@ -5,6 +5,12 @@ interface Idelete{
   tablename: string
 }
 
+interface Iskill{
+  id_skill: number,
+  skill_name: string,
+  percentaje: number
+}
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -20,7 +26,7 @@ export class AboutComponent {
   protected studies: Array<number>;
   protected experiences: Array<number>;
   protected deleteModal: Idelete;
-  protected popUpSkill:number;
+  protected popUpSkill:Iskill;
   protected popUpAbout:boolean;
   protected popUpStudies:number;
   protected aboutDescription:string;
@@ -32,7 +38,7 @@ export class AboutComponent {
     this.studies = [0,1,2];
     this.experiences = [0,1,2];
     this.deleteModal = {id:-1,tablename:''};
-    this.popUpSkill = -2;
+    this.popUpSkill = {id_skill:-2,skill_name:'',percentaje:0};
     this.popUpAbout = false;
     this.aboutDescription =
     `Hola soy matias un desarrollador web nacido en Argentina.Desde siempre he disfrutado los temas relacionados con la tecnología.
@@ -51,8 +57,8 @@ export class AboutComponent {
     this.deleteModal = deleteInfo;
   }
 
-  handleEditSkill(id:number){
-    this.popUpSkill = id;
+  handleEditSkill(skill: Iskill){
+    this.popUpSkill = skill;
   }
 
   handleEditAbout():void{

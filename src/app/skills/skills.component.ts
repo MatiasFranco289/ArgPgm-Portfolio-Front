@@ -1,9 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface Idelete{
   id: number,
   tablename: string
+}
+
+interface Iskill{
+  id_skill: number,
+  skill_name: string,
+  percentaje: number
 }
 
 @Component({
@@ -12,16 +19,24 @@ interface Idelete{
   styleUrls: ['./skills.component.css']
 })
 
-export class SkillsComponent {
-  @Input() skills: Array<number>; 
+export class SkillsComponent implements OnInit{
+  protected skills: Array<Iskill>; 
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
-  @Output() editCreate:EventEmitter<number>;
+  @Output() editCreate:EventEmitter<Iskill>;
   protected faPlus;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.skills = [];
     this.faPlus = faPlus;
-    this.editCreate = new EventEmitter<number>;
+    this.editCreate = new EventEmitter<Iskill>;
+  }
+
+  ngOnInit(): void {
+    this.http.get('http://localhost:8080/skills')
+    .subscribe((res) => {
+      this.skills = res as Array<Iskill>;
+      console.log(this.skills);
+    })
   }
 
   handleDelete(deleteInfo:Idelete): void{//Esto es llamado desde alguno de los componente hijos de skills
@@ -31,7 +46,7 @@ export class SkillsComponent {
     });
   }
 
-  openPopUp(id:number):void{
-   this.editCreate.emit(id);
+  openPopUp(skill:Iskill):void{
+   this.editCreate.emit(skill);
   }
 }

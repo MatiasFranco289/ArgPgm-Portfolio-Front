@@ -11,7 +11,7 @@
             description = "{{aboutDescription}}" (aboutPopUp)="handleEditAbout()"></about-card>
 
             <!-- Conocimientos -->
-            <skills [skills]="skills" (delete)="handleDelete($event)" (editCreate)="handleEditSkill($event)"></skills>
+            <skills (delete)="handleDelete($event)" (editCreate)="handleEditSkill($event)"></skills>
 
             <!-- Estudios -->
             <studies [studies]="studies" (delete)="handleDelete($event)" (edit)="handleEditStudy($event)"></studies>
@@ -25,7 +25,7 @@
     <!-- Modal de Borrado -->
     <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
     <!-- Modal de Skills -->
-    <skill-form [popUpState]="popUpSkill" (close)="handleEditSkill(-2)"></skill-form>
+    <skill-form [popUpState]="popUpSkill" (close)="handleEditSkill({id_skill:-2,skill_name:'',percentaje:0})"></skill-form>
     <!-- Modal de About -->
     <about-form [popUpState]="popUpAbout" description="{{aboutDescription}}" imgUrl="{{aboutImgUrl}}" (close)="handleEditAbout()">
     </about-form>

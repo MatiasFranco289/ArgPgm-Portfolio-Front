@@ -16,18 +16,10 @@
             <div *ngFor="let p of projects let i = index">
                 <!-- Esto deberia rellenarlo con la info contenida en projects que deberia ser un objeto con info traida de la DB -->
                 <!-- Fijate si le podes poner un delay dependiendo del index a cada carta -->
-                <project-card name="Project name" dateInit="11/11/11" dateFinish="11/11/11" 
-                description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, laborum cumque 
-                rem assumenda illo odio expedita dolorem placeat ab dolor accusantium enim earum 
-                velit ipsum ad aut aperiam, aspernatur nobis.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, laborum cumque 
-                rem assumenda illo odio expedita dolorem placeat ab dolor accusantium enim earum 
-                velit ipsum ad aut aperiam, aspernatur nobis.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, laborum cumque 
-                rem assumenda illo odio expedita dolorem placeat ab dolor accusantium enim earum 
-                velit ipsum ad aut aperiam, aspernatur nobis." projectLink = "www.github.com"
-                videoLink="www.youtube.com" deployLink="www.google.com" imgLink="https://i.ibb.co/yQX0pqk/defaul-Thumbnail.png"
-                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="i" 
+                <project-card [name]="p.title" [dateInit]="p.dateInit" [dateFinish]="p.dateFinish" 
+                [description]="p.description" [projectLink] = "p.urlGit"
+                [videoLink]="p.urlVideo" [deployLink]="p.urlDeploy" [imgLink]="p.urlImg"
+                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="p.id_project" 
                 (delete) = "handleDelete($event)"
                 (edit)="handleEdit($event)">
             </project-card>

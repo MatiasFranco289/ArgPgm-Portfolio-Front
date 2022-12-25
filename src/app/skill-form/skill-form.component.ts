@@ -1,20 +1,28 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs';
+
+interface Iskill{
+  id_skill?: number,
+  skill_name: string,
+  percentaje: number
+}
 
 @Component({
   selector: 'skill-form',
   templateUrl: './skill-form.component.html',
   styleUrls: ['./skill-form.component.css']
 })
-export class SkillFormComponent {
+export class SkillFormComponent implements OnChanges{
   protected faXmark;
   protected groupForm: FormGroup;
   protected sendState:string;
-  @Input() popUpState: number;
+  @Input() popUpState: Iskill;
   @Output() close: EventEmitter<number>;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.faXmark = faXmark;
     this.groupForm = new FormGroup({
       skill: new FormControl('', [Validators.required]),
@@ -22,7 +30,14 @@ export class SkillFormComponent {
     })
     this.sendState = '';
     this.close = new EventEmitter<number>;
-    this.popUpState = -2;
+    this.popUpState = {id_skill:-2,skill_name:'',percentaje:0};
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.popUpState.id_skill && this.popUpState.id_skill < 0) return;//Si el popUp se abre para otra cosa que no sea edicion no doy bola
+    //Si se abre para edicion sobreescribo el formulario con los valores anteriores
+    this.groupForm.patchValue({skill: this.popUpState.skill_name});
+    this.groupForm.patchValue({level: this.popUpState.percentaje});
   }
 
   sendForm():string{
@@ -30,9 +45,25 @@ export class SkillFormComponent {
     //Hacer el envio aca
     this.sendState = 'loading';
 
-    setTimeout(() => {
+    //Si id_skill es -1 es porque se quiere crear un nuevo skill, por lo tanto no debo asignarle una id, caso contrario si le asigno la id anterior de ese skill
+    let newSkill: Iskill = this.popUpState.id_skill === -1?
+    {skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}:
+    {id_skill: this.popUpState.id_skill, skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}
+
+    /* this.http.post('http://localhost:8080/skills', newSkill)
+    .subscribe((res) => {
+      console.log(res);
       this.sendState = 'done';
-    },1000);
+    }) */
+
+    this.http.post('http://localhost:8080/skills', newSkill)
+    .subscribe((res) => {
+      console.log(res);
+      this.sendState = 'done';
+    },
+    (error) => {
+      console.log("Hubo un error we "+error);
+    })
 
     return '';
   }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 interface Idelete{
@@ -12,19 +13,27 @@ interface Idelete{
   styleUrls: ['./projects.component.css']
 })
 
-export class ProjectsComponent{
+export class ProjectsComponent implements OnInit{
   protected faPlus;
-  protected projects:Array<number>;//Feel free to change this shit
+  protected projects:Array<any>;
   protected deleteModal:Idelete;
   protected editPopUp:number;
 
-  constructor(){
+  constructor(private http: HttpClient){
     this.faPlus = faPlus;
-    this.projects = [1,2,3];
+    this.projects = [];
     this.deleteModal = {id:-1,tablename:''}
     this.editPopUp = -2;
   }
   
+  ngOnInit(): void {
+      this.http.get("http://localhost:8080/projects")
+      .subscribe((res) => {
+        this.projects = res as Array<any>;
+        console.log(this.projects);
+
+      })
+  }
 
   handleDelete(deleteInfo:Idelete):void{
     this.deleteModal = deleteInfo;

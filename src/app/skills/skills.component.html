@@ -4,7 +4,7 @@
         <h2 class="text-white">Habilidades</h2>
         <div class="border col-6 ms-3" style="max-height: 1px;"></div>
 
-        <button (click)="openPopUp(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+        <button (click)="openPopUp({id_skill:-1,skill_name:'',percentaje:0})" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
             <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
         </button>
     </div>
@@ -13,8 +13,8 @@
         
         <div *ngFor="let skill of skills let i = index">
             <!-- Aca tendrias que pasarle los datos reales de la DB -->
-            <skill-card name="Name from DB" [progress]="100" 
-            [skillId]="i" (delete) = "handleDelete($event)"
+            <skill-card [name]="skill.skill_name" [progress]="skill.percentaje" 
+            [skillId]="skill.id_skill" (delete) = "handleDelete($event)"
             (editCreate)="openPopUp($event)">
             </skill-card>
         </div>

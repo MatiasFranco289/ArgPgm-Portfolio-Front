@@ -1,6 +1,6 @@
 <div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
 style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwitch]="sendState" 
-*ngIf="popUpState !== -2">
+*ngIf="popUpState.id_skill !== -2">
 
     <form *ngSwitchCase="''" [formGroup]="groupForm" action="" class="bg-dark d-flex flex-column align-items-center text-white p-3 shadow">
 

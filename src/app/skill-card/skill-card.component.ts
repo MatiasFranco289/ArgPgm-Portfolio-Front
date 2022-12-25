@@ -6,6 +6,12 @@ interface Idelete{
   tablename: string
 }
 
+interface Iskill{
+  id_skill: number,
+  skill_name: string,
+  percentaje: number
+}
+
 @Component({
   selector: 'skill-card',
   templateUrl: './skill-card.component.html',
@@ -17,7 +23,8 @@ export class SkillCardComponent{
   @Input() progress:number;
   @Input() skillId:number;
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
-  @Output() editCreate: EventEmitter<number>;
+  /* @Output() editCreate: EventEmitter<number>; */
+  @Output() editCreate: EventEmitter<Iskill>;
 
   protected faPen;
   protected faTrash;
@@ -28,7 +35,7 @@ export class SkillCardComponent{
     this.faPen = faPen;
     this.faTrash = faTrash;
     this.skillId = 0;
-    this.editCreate = new EventEmitter<number>;
+    this.editCreate = new EventEmitter<Iskill>;
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar
@@ -39,6 +46,10 @@ export class SkillCardComponent{
   }
 
   openPopUp():void{
-    this.editCreate.emit(this.skillId);
+    this.editCreate.emit({
+      id_skill: this.skillId,
+      skill_name: this.name,
+      percentaje: this.progress
+    });
   }
 }
