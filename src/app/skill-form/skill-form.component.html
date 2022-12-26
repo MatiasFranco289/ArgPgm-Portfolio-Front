@@ -5,7 +5,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
     <form *ngSwitchCase="''" [formGroup]="groupForm" action="" class="bg-dark d-flex flex-column align-items-center text-white p-3 shadow">
 
         <div class="d-flex justify-content-end w-100">
-            <button (click)="closePopUp()" class="btn btn-outline-danger">
+            <button type="button" (click)="closePopUp()" class="btn btn-outline-danger">
                 <fa-icon [icon]="faXmark"></fa-icon>
             </button>
         </div>
@@ -20,14 +20,14 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
         [ngClass]="{'border border-2 border-danger' : groupForm.get('level')?.status=='INVALID' && 
         groupForm.get('level')?.touched}" placeholder="Nivel habilidad (0 - 100)">
 
-        <button (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
+        <button type="button" (click)="sendForm()" class="btn btn-outline-success mt-3">Enviar</button>
     </form>
 
     <!-- popUp Error -->
     <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center text-danger text-center shadow align-items-center" 
     style="width:250px;">
         <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
-        <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="closeError()" class="btn btn-outline-success">Ok</button>
     </div>
 
     <!-- popUp Loading -->
@@ -41,7 +41,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);" [ngSwit
     <!-- popUp Exito -->
     <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
         <h4>Listo!</h4>
-        <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="reload()" class="btn btn-outline-success">Ok</button>
     </div>
 
 </div>

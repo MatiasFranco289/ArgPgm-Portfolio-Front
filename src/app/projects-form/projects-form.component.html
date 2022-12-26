@@ -1,4 +1,4 @@
-<div *ngIf="popUpState!==-2" class="position-fixed top-0 start-0 w-100 h-100 d-flex 
+<div *ngIf="popUpState.id_project!==-2" class="position-fixed top-0 start-0 w-100 h-100 d-flex 
 justify-content-center align-items-start text-white z-index-3 overlay"
 [ngSwitch]="sendState">
 
@@ -48,7 +48,7 @@ justify-content-center align-items-start text-white z-index-3 overlay"
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="gitUrl" style="min-width:130px;">GitHub </label>
             <input class="col-6" type="text" id="gitUrl" style="min-width:250px;outline:none;"
-            placeholder="GitHub url (Opcional)" formControlName="gitUrl"
+            placeholder="GitHub url" formControlName="gitUrl"
             [ngClass]="{'border border-2 border-danger' : projectForm.get('gitUrl')?.status=='INVALID' && 
             projectForm.get('gitUrl')?.touched}">
         </div>
@@ -79,17 +79,18 @@ justify-content-center align-items-start text-white z-index-3 overlay"
 
         <div class="d-flex justify-content-between align-items-center my-3 flex-wrap wrapper position-relative">
             <label class="  fs-4" for="video" style="min-width:130px;">Tecnologias </label>
-            <!-- Esto va a venir de la db -->
+
             <div class="col-6 d-flex flex-wrap" style="min-width:250px;outline:none;">
-                <div *ngFor="let item of tecnologys | keyvalue">
-                    <button class="btn btn-outline-success m-2" id="{{item.key}}"
+                <div *ngFor="let skill of allSkills let i = index">
+                    <button class="btn btn-outline-success m-2" [id]="i"
                     (click)="handleTecnology($event)"
-                        [ngClass]="{'btn-outline-danger text-white bg-danger':item.value}">
-                        {{item.key}}
+                        [ngClass]="{'btn-outline-danger text-white bg-danger':skill.inProject}">
+                        {{skill.skill_name}}
                     </button>
                 </div>
-
             </div>
+
+            
         </div>
 
         <div class="d-flex justify-content-center">

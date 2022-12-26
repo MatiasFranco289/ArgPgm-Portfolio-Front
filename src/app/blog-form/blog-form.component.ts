@@ -146,7 +146,6 @@ export class BlogFormComponent {
 
     this.http.post('http://localhost:8080/posts', postToCreate)
     .subscribe((res) => {
-      console.log(res);
       this.sendState = 'done';
     })
   

@@ -8,7 +8,9 @@
         <div class="mt-5">
 
             <div class="position-absolute top-0 start-0 p-2">
-                <button (click)="handleEdit(-1)" class="btn btn-outline-success my-2 my-sm-0">
+                <button (click)='handleCreate({id_project: -1,title: "",dateInit: "",dateFinish: "",
+                    description: "",urlGit: "",urlDeploy: "",urlVideo: "",urlImage: "",skills: []})'
+                     class="btn btn-outline-success my-2 my-sm-0">
                     <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
                 </button>
             </div>
@@ -16,12 +18,9 @@
             <div *ngFor="let p of projects let i = index">
                 <!-- Esto deberia rellenarlo con la info contenida en projects que deberia ser un objeto con info traida de la DB -->
                 <!-- Fijate si le podes poner un delay dependiendo del index a cada carta -->
-                <project-card [name]="p.title" [dateInit]="p.dateInit" [dateFinish]="p.dateFinish" 
-                [description]="p.description" [projectLink] = "p.urlGit"
-                [videoLink]="p.urlVideo" [deployLink]="p.urlDeploy" [imgLink]="p.urlImg"
-                [tecnologys]="['HTML,','CSS,','JS']" [projectId]="p.id_project" 
+                <project-card [projectInfo]="p"
                 (delete) = "handleDelete($event)"
-                (edit)="handleEdit($event)">
+                (edit)="handleCreate($event)">
             </project-card>
             </div>
             
@@ -34,4 +33,5 @@
 <!-- (isOpenChange) es el evento emisor definido en el elemento hijo <projects-form>, asi que aca digo
 que cuando ese evento sea emitido por el componente hijo va a llamar a el metodo handleCreate() de este
 componente que seria el padre -->
-<projects-form [popUpState]="editPopUp" (close)="handleEdit(-2)"></projects-form>
+<projects-form [popUpState]="editPopUp" (close)='handleCreate({id_project: -2,title: "",dateInit: "",dateFinish: "",
+description: "",urlGit: "",urlDeploy: "",urlVideo: "",urlImage: "",skills: []})'></projects-form>

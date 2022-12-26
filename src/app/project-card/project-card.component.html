@@ -1,16 +1,16 @@
 <!-- Carta proyecto -->
 <div class="container-lg text-start d-flex justify-content-between card-project py-3   my-5">
     <div class="d-flex align-items-center">
-        <img src="{{imgLink || defaultImg}}" class="thumbnail" alt="thumbnail.png">
+        <img src="{{projectInfo.urlImage || defaultImg}}" class="thumbnail" alt="thumbnail.png">
     </div>
     
-    <div class="ms-4 p-2 d-flex flex-column">
+    <div class="ms-4 p-2 d-flex flex-column w-100">
         <!-- Contenedor Titulo, Fecha y Botones -->
         <div class="position-relative">
-            <h2 class="text-white m-0">{{name}}</h2>
+            <h2 class="text-white m-0">{{projectInfo.title}}</h2>
             <p class="text-white">
-                <fa-icon [icon]="faCalendar" class="text-white"></fa-icon> {{dateInit || '00/00/00'}} - 
-                <fa-icon [icon]="faFlagCheckered" class="text-white"></fa-icon> {{dateFinish || '00/00/00'}}
+                <fa-icon [icon]="faCalendar" class="text-white"></fa-icon> {{projectInfo.dateInit || '00/00/00'}} - 
+                <fa-icon [icon]="faFlagCheckered" class="text-white"></fa-icon> {{projectInfo.dateFinish || '00/00/00'}}
             </p>
 
             <div *ngIf="logged" class="position-absolute top-0 end-0">
@@ -25,20 +25,21 @@
 
         </div>
 
-        <p class="text-white">{{description}}</p>
+        <p class="text-white">{{projectInfo.description}}</p>
         
         <div class="flex-fill d-flex justify-content-between flex-wrap">
             <!-- Links -->
             <div class="iconsContainer d-flex align-items-end flex-wrap my-2">
-                <a *ngIf="projectLink" href={{projectLink}}><fa-icon [icon]="faGithub" class="text-white"></fa-icon></a>
-                <a *ngIf="deployLink" href="{{deployLink}}"><fa-icon [icon]="faLink" class="text-white"></fa-icon></a>
-                <a *ngIf="videoLink" href="{{videoLink}}"><fa-icon [icon]="faYoutube" class="text-white"></fa-icon></a>
+                <a *ngIf="projectInfo.urlGit" href={{projectInfo.urlGit}}><fa-icon [icon]="faGithub" class="text-white"></fa-icon></a>
+                <a *ngIf="projectInfo.urlDeploy" href="{{projectInfo.urlDeploy}}"><fa-icon [icon]="faLink" class="text-white"></fa-icon></a>
+                <a *ngIf="projectInfo.urlVideo" href="{{projectInfo.urlVideo}}"><fa-icon [icon]="faYoutube" class="text-white"></fa-icon></a>
             </div>
 
             <!-- Tecnologias -->
             <div class="iconsContainer d-flex align-items-end flex-wrap my-2">
-                <div *ngFor="let t of tecnologys">
-                    <h6 class="text-white">{{t}}</h6>
+                <div *ngFor="let t of projectInfo.skills let i = index">
+                    <h6 class="text-white">{{t.skill_name + (i < projectInfo.skills.length-1?',':'')}}</h6>
+                    
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
     <form *ngSwitchCase="''" [formGroup]="blogForm" class="bg-dark shadow d-flex flex-column text-white align-items-center p-3">
             
         <div class="w-100 d-flex justify-content-start">
-            <button (click)="closePopUp()" class="btn btn-outline-danger">
+            <button type="button" (click)="closePopUp()" class="btn btn-outline-danger">
                 <fa-icon [icon]="faXmark"></fa-icon>
             </button>
         </div>
@@ -34,14 +34,14 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
                     [ngClass]="{'border border-2 border-danger' : blogForm.get('url'+i)?.status=='INVALID' && 
                     blogForm.get('url'+i)?.touched}" [readOnly]="readOnly[i]">
 
-                    <button *ngIf="i === imgLinks.length-1" (click)="handleDeleteUrl()" class="btn btn-outline-danger mx-2">
+                    <button type="button" *ngIf="i === imgLinks.length-1" (click)="handleDeleteUrl()" class="btn btn-outline-danger mx-2">
                         <fa-icon [icon]="faXmark"></fa-icon>
                     </button>
                 </div>
 
             </div>
 
-            <button *ngIf="imgLinks.length < 4" (click)="handleNewUrl()" class="btn btn-outline-success">
+            <button type="button" *ngIf="imgLinks.length < 4" (click)="handleNewUrl()" class="btn btn-outline-success">
                 <fa-icon [icon]="faPlus"></fa-icon>
             </button>
         </div>
@@ -53,7 +53,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
     <div *ngSwitchCase="'error'" class="bg-dark p-3 d-flex flex-column justify-content-center text-danger text-center shadow align-items-center" 
     style="width:250px;">
         <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
-        <button (click)="closeError()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="closeError()" class="btn btn-outline-success">Ok</button>
     </div>
 
     <!-- popUp Loading -->
@@ -67,7 +67,7 @@ style="background-color:rgba(255,255,255,.4);backdrop-filter:blur(5px);"
     <!-- popUp Exito -->
     <div *ngSwitchCase="'done'" class="bg-dark p-3 d-flex flex-column justify-content-center align-items-center text-white shadow" style="width:250px;">
         <h4>Listo!</h4>
-        <button (click)="reload()" class="btn btn-outline-success">Ok</button>
+        <button type="button" (click)="reload()" class="btn btn-outline-success">Ok</button>
     </div>
 
 </div>

@@ -125,7 +125,7 @@ export class ExperienceFormComponent implements OnInit, OnChanges{
       next: (res) => this.sendState = "done",
       error: (err) => {
         this.sendState = "error"
-        console.error(err);
+        console.error("An unexpected error has ocurred while trying to create or update a register.");
       }
     });
 
