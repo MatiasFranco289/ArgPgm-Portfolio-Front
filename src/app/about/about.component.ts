@@ -22,6 +22,16 @@ interface Istudy{
   typeId: number
 }
 
+interface Iexperience{
+  id_experience: number,
+  id_place: number,
+  title: string,
+  description: string,
+  location: string,
+  dateInit: string,
+  dateFinish: string,
+}
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -42,7 +52,7 @@ export class AboutComponent implements OnInit{
   protected popUpStudies:Istudy;
   protected aboutDescription:string;
   protected aboutImgUrl:string;
-  protected popUpExperiences:number;
+  protected popUpExperiences:Iexperience;
   
   constructor(private http: HttpClient){
     this.skills = [0,1,2,3,4,5];
@@ -62,7 +72,15 @@ export class AboutComponent implements OnInit{
       typeName: "",
       typeId: -2
     };
-    this.popUpExperiences = -2;
+    this.popUpExperiences = {
+      id_experience: -2,
+      id_place: -2,
+      title: "",
+      description: "",
+      location: "",
+      dateInit: "",
+      dateFinish: "",
+    }
   }
 
   ngOnInit(): void {
@@ -94,7 +112,7 @@ export class AboutComponent implements OnInit{
     this.popUpStudies = studyInfo;
   }
 
-  handleEditExperience(id:number):void{
-    this.popUpExperiences = id;
+  handleEditExperience(experienceInfo:Iexperience):void{
+    this.popUpExperiences = experienceInfo;
   }
 }

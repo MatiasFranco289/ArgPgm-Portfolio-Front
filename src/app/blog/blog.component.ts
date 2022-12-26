@@ -41,7 +41,7 @@ export class BlogComponent implements OnInit {
       fetch("http://localhost:8080/posts")
       .then(data => data.json())
       .then(response => {
-        this.publications = response;
+        this.publications = response.filter((publication: any) => publication.id_post !== 1);
       })
   }
 

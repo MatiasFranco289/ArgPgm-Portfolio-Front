@@ -6,6 +6,16 @@ interface Idelete{
   tablename: string
 }
 
+interface Iexperience{
+  id_experience: number,
+  id_place: number,
+  title: string,
+  description: string,
+  location: string,
+  dateInit: string,
+  dateFinish: string,
+}
+
 @Component({
   selector: 'experience-card',
   templateUrl: './experience-card.component.html',
@@ -21,8 +31,9 @@ export class ExperienceCardComponent{
   @Input() description:string;
   @Input() duration:string;
   @Input() idExperience:number;
+  @Input() idPlace:number;
   @Output() delete = new EventEmitter<Idelete>();
-  @Output() edit:EventEmitter<number>;
+  @Output() edit:EventEmitter<Iexperience>;
   protected faPen;
   protected faTrash;
   protected faCircle;
@@ -37,8 +48,9 @@ export class ExperienceCardComponent{
     this.faPen = faPen;
     this.faTrash = faTrash;
     this.faCircle = faCircle;
-    this.idExperience = 0;
-    this.edit = new EventEmitter<number>();
+    this.idExperience = -2;
+    this.idPlace = -2;
+    this.edit = new EventEmitter<Iexperience>();
   }
 
   handleDelete():void{
@@ -49,6 +61,14 @@ export class ExperienceCardComponent{
   }
 
   handleEdit():void{
-    this.edit.emit(this.idExperience);
+    this.edit.emit({
+      id_experience: this.idExperience,
+      id_place: this.idPlace,
+      title: this.name,
+      description: this.description,
+      location: this.location,
+      dateInit: this.dateInit,
+      dateFinish: this.dateFinish,
+    });
   }
 }
