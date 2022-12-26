@@ -16,7 +16,12 @@
     <div class="text-white ms-3 mt-3 text-start">
         <h4 class="m-0">{{studyInfo.title}}</h4>
         <h6 class="m-0">{{studyInfo.typeName}}</h6>
-        <p>{{studyInfo.dateInit}} - {{studyInfo.dateFinish}}</p>
+        <p>
+            <fa-icon [icon]="faCalendar" class="text-white"></fa-icon>
+            {{' '+studyInfo.dateInit}}
+            <fa-icon [icon]="faFlagCheckered" class="text-white ms-2"></fa-icon>
+            {{' '+studyInfo.dateFinish}}
+        </p>
 
         <h6>{{studyInfo.description}}</h6>
     </div>

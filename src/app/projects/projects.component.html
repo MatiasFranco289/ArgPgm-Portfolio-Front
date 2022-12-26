@@ -21,9 +21,10 @@
                 <project-card [projectInfo]="p"
                 (delete) = "handleDelete($event)"
                 (edit)="handleCreate($event)">
-            </project-card>
+                </project-card>
             </div>
-            
+
+            <h5 *ngIf="!projects.length" class="text-secondary">Oops, parece que no hay proyectos todavia :/</h5>
             
         </div>
     </div>

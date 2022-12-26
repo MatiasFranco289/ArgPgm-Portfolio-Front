@@ -90,7 +90,7 @@ export class AboutComponent implements OnInit{
     .subscribe({
       next: (res: any) => {
         this.aboutDescription = res.description;
-        this.aboutImgUrl = res.images[0].imgUrl;
+        if(res.images[0]) this.aboutImgUrl = res.images[0].imgUrl;
       },
       error: (err) => console.log("An unexpected error has ocurred while trying to get data for About.")
     });

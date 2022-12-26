@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faCalendar, faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 
 interface Idelete{
   id: number,
@@ -29,6 +29,8 @@ export class StudyCardComponent{
   @Output() edit:EventEmitter<Istudy>;
   protected faPen;
   protected faTrash;
+  protected faCalendar;
+  protected faFlagCheckered;
 
   constructor(){
     this.img = '';
@@ -44,6 +46,8 @@ export class StudyCardComponent{
       typeId: -2
     }
     this.edit = new EventEmitter<Istudy>();
+    this.faCalendar = faCalendar;
+    this.faFlagCheckered = faFlagCheckered;
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar

@@ -18,7 +18,8 @@
             (editCreate)="openPopUp($event)">
             </skill-card>
         </div>
-    
+
+        <h5 *ngIf="!skills.length" class="text-secondary">Oops, parece que no hay habilidades todavia :/</h5>
     </div>
 
 </div>

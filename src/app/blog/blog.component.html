@@ -22,6 +22,8 @@
                 [postId] = "p.id_post" (delete) = "handleDelete($event)" (edit)="changePopUpState($event)">
                 </blog-post>
             </div>
+
+            <h5 *ngIf="!publications.length" class="text-secondary">Oops, parece que no hay publicaciones todavia :/</h5>
         </div>
     </div>
 

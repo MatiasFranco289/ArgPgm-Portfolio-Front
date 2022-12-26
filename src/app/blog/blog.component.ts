@@ -12,7 +12,7 @@ interface IdbImage{
 }
 
 interface Iblog{
-  createdAt: Date,
+  createdAt: string,
   description: string,
   id_post: number,
   images: Array<IdbImage>,
@@ -42,6 +42,11 @@ export class BlogComponent implements OnInit {
       .then(data => data.json())
       .then(response => {
         this.publications = response.filter((publication: any) => publication.id_post !== 1);
+        this.publications = this.publications.map((publication => {
+          let formattedDate = new Date(publication.createdAt).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) 
+          publication.createdAt = formattedDate;
+          return publication;
+        }))
       })
   }
 

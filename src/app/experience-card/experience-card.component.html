@@ -18,7 +18,12 @@
 
     <div class="text-start ms-5">
         <h4 class="m-0">{{name}}</h4>
-        <h6 class="m-0">{{dateInit}} - {{dateFinish}} · {{duration}}</h6>
+        <h6 class="m-0">
+            <fa-icon [icon]="faCalendar" class="text-white"></fa-icon>
+            {{dateInit}} 
+            <fa-icon [icon]="faFlagCheckered" class="text-white ms-2"></fa-icon>
+            {{dateFinish}} · {{duration}}
+        </h6>
         <p>{{location}}</p>
 
         <p>{{description}}</p>

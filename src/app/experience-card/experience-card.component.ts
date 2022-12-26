@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { faPen, faTrash, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faCircle, faCalendar, faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 
 interface Idelete{
   id: number,
@@ -37,6 +37,8 @@ export class ExperienceCardComponent{
   protected faPen;
   protected faTrash;
   protected faCircle;
+  protected faCalendar;
+  protected faFlagCheckered;
 
   constructor(){
     this.name = '';
@@ -51,6 +53,8 @@ export class ExperienceCardComponent{
     this.idExperience = -2;
     this.idPlace = -2;
     this.edit = new EventEmitter<Iexperience>();
+    this.faCalendar = faCalendar;
+    this.faFlagCheckered = faFlagCheckered;
   }
 
   handleDelete():void{
