@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  domain: ""
+  domain: "https://argpgm-portfolio-back-production.up.railway.app"
 };
