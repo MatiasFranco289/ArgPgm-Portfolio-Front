@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id: number,
@@ -41,7 +42,7 @@ export class ExperienceComponent implements OnInit{
 
   ngOnInit(): void {
     //Recupero los "places" y con ello todas las experiencias relacionadas a estos
-    this.http.get("http://localhost:8080/places")
+    this.http.get(`${environment.domain}/places`)
     .subscribe({
       next: (res: any) => {
         res.forEach((place:any) => {//Por cada place

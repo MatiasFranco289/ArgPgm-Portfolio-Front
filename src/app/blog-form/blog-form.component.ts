@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core'
 import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface IdbImage{
   id_image?: number,
@@ -57,7 +58,7 @@ export class BlogFormComponent {
 
   ngOnChanges(): void {//Cuando cambia algo
     if(this.popUpState > -1){//Si el popUpState es mayor a -1 es porque se quiere editar un post y popUpState contiene la id de ese post
-      this.http.get(`http://localhost:8080/posts/${this.popUpState}`)//Por lo tanto llamo a la api pidiendo la info de ese post
+      this.http.get(`${environment.domain}/posts/${this.popUpState}`)//Por lo tanto llamo a la api pidiendo la info de ese post
       .subscribe((res: any) => {//Cuando la api responde sobreescribo los datos en el formulario para que ya aparezca rellenado
         this.blogForm.patchValue({title: res.title});
         this.blogForm.patchValue({description: res.description});
@@ -105,7 +106,7 @@ export class BlogFormComponent {
 
     let deletedId = this.previousImgs.filter(prevImg => prevImg.imgUrl === deletedUrl)[0];
     if(deletedId){
-      this.http.delete(`http://localhost:8080/images/${deletedId.id_image}`)
+      this.http.delete(`${environment.domain}/images/${deletedId.id_image}`)
       .subscribe((res) => {this.reload()});
     }
 
@@ -144,7 +145,7 @@ export class BlogFormComponent {
 
     })
 
-    this.http.post('http://localhost:8080/posts', postToCreate)
+    this.http.post(`${environment.domain}/posts`, postToCreate)
     .subscribe((res) => {
       this.sendState = 'done';
     })

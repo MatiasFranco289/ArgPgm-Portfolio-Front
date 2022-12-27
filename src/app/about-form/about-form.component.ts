@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core'
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,Validators,FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'about-form',
@@ -53,7 +54,7 @@ export class AboutFormComponent implements OnChanges{
       }]
     }
     
-    this.http.post("http://localhost:8080/posts", newAbout)
+    this.http.post(`${environment.domain}/posts`, newAbout)
     .subscribe({
       next: () => this.sendStatus = 'done',
       error: (err) => console.log("An unexpected error has ocurred while trying to update the About info.")

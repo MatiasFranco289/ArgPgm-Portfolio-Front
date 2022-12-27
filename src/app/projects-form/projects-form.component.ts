@@ -3,6 +3,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Iskill{
   id_skill: number,
@@ -65,7 +66,7 @@ export class ProjectsFormComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    this.http.get("http://localhost:8080/skills")
+    this.http.get(`${environment.domain}/skills`)
     .subscribe({
       next: (res) => {
         this.allSkills = res as Array<Iskill>
@@ -145,7 +146,7 @@ export class ProjectsFormComponent implements OnInit, OnChanges{
     if(this.projectForm.value.videoUrl) newProject.urlVideo = this.projectForm.value.videoUrl;
     if(this.projectForm.value.imgUrl)  newProject.urlImage = this.projectForm.value.imgUrl;
 
-    this.http.post("http://localhost:8080/projects", newProject)
+    this.http.post(`${environment.domain}/projects`, newProject)
     .subscribe({
       next: () => this.sendState = "done",
       error: (err) => console.error("An unexpected error has ocurred while trying to create or update the resource.")

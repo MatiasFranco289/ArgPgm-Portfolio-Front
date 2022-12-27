@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id: number,
@@ -59,7 +60,7 @@ export class ProjectsComponent implements OnInit{
   }
   
   ngOnInit(): void {
-      this.http.get("http://localhost:8080/projects")
+      this.http.get(`${environment.domain}/projects`)
       .subscribe((res) => {
         this.projects = res as Array<Iproject>;
       })

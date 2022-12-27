@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id: number,
@@ -37,7 +38,7 @@ export class StudiesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/types')
+    this.http.get(`${environment.domain}/types`)
     .subscribe({
       next: (res: any) => {
         res.forEach((studyType: any) => {

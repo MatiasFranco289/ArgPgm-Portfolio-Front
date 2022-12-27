@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id: number,
@@ -40,7 +41,7 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      fetch("http://localhost:8080/posts")
+      fetch(`${environment.domain}/posts`)
       .then(data => data.json())
       .then(response => {
         this.publications = response.filter((publication: any) => publication.id_post !== 1);

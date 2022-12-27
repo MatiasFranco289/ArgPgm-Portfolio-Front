@@ -2,6 +2,7 @@ import { Component, Input, Output,EventEmitter, OnChanges, SimpleChanges, OnInit
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Istudy{
   id_study?: number,
@@ -51,7 +52,7 @@ export class StudiesFormComponent implements OnChanges, OnInit{
 
   ngOnInit(): void {
     //Al iniciar consulta los tipos de estudios existentes
-    this.http.get("http://localhost:8080/types")
+    this.http.get(`${environment.domain}/types`)
     .subscribe({
       next: (res: any) => {
         this.typeStudies = res.map((typeStudy: any) => {
@@ -109,7 +110,7 @@ export class StudiesFormComponent implements OnChanges, OnInit{
       }]
     };
 
-    this.http.post("http://localhost:8080/types", newStudy)
+    this.http.post(`${environment.domain}/types`, newStudy)
     .subscribe({
       next: (res) => this.sendState = "done",
       error: (err) => this.sendState = "error"

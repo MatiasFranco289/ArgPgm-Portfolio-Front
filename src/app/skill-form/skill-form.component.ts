@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges} from 
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Iskill{
   id_skill?: number,
@@ -49,7 +50,7 @@ export class SkillFormComponent implements OnChanges{
     {skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}:
     {id_skill: this.popUpState.id_skill, skill_name: this.groupForm.value.skill, percentaje: this.groupForm.value.level}
 
-    this.http.post('http://localhost:8080/skills', newSkill)
+    this.http.post(`${environment.domain}/skills`, newSkill)
     .subscribe({
       next: (res) => this.sendState = "done",
       error: (err) => this.sendState = "error",

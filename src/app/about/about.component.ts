@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id: number,
@@ -86,7 +87,7 @@ export class AboutComponent implements OnInit{
   ngOnInit(): void {
     //La informacion de la carta de about esta contenida es un simple post, igual que los demas de blogs.
     //Es importante para que funcione que ese post nunca sea eliminado y su id siempre sea "1"
-    this.http.get("http://localhost:8080/posts/1")
+    this.http.get(`${environment.domain}/posts/1`)
     .subscribe({
       next: (res: any) => {
         this.aboutDescription = res.description;

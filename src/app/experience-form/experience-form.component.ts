@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 interface Iexperience{
   id_experience: number,
@@ -71,7 +72,7 @@ export class ExperienceFormComponent implements OnInit, OnChanges{
 
 
   ngOnInit(): void {
-    this.http.get("http://localhost:8080/places")
+    this.http.get(`${environment.domain}/places`)
     .subscribe({
       next: (res: any) => {
         this.allPlaces = res.map((place:any) => {
@@ -120,7 +121,7 @@ export class ExperienceFormComponent implements OnInit, OnChanges{
     //Si se esta tratando de editar una experiencia existente, agrego su id anterior para evitar crear un registro nuevo
     if(this.popUpState.id_experience !== -1) newExperience.experiences[0].id_experience = this.popUpState.id_experience; 
 
-    this.http.post("http://localhost:8080/places", newExperience)
+    this.http.post(`${environment.domain}/places`, newExperience)
     .subscribe({
       next: (res) => this.sendState = "done",
       error: (err) => {

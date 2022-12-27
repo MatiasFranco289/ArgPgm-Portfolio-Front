@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 interface Iuser{
   id: number,
@@ -33,7 +34,7 @@ export class LoginComponent{
     this.sendState = 'loading';
 
     //Sisisi ya se, este login es horrible, ineficiente e inseguro, pero tengo sueño. Pido perdon 
-    this.http.get("http://localhost:8080/users/all")
+    this.http.get(`${environment.domain}/users/all`)
     .subscribe({
       next: (res: any) => {
         res = res.find((user: Iuser) => {return user.username === this.loginForm.value.username});

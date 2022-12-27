@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output,EventEmitter } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 interface Idelete{
   id:number,
@@ -37,7 +38,7 @@ export class DeleteModalComponent{
     //Que contiene el id del item a borrar y el nombre de la tabla 
     this.deletePhase = 'deleting';//Esto hace que apareza una ruedita de cargando
 
-    this.http.delete(`http://localhost:8080/${this.deleteInfo.tablename}/${this.deleteInfo.id}`)
+    this.http.delete(`${environment.domain}/${this.deleteInfo.tablename}/${this.deleteInfo.id}`)
     .subscribe((res) => {
       this.deletePhase = 'done';//Esto hace que aparezca un cartel que informa el exito o fallo
     })
