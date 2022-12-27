@@ -1,11 +1,11 @@
 <!-- Carta habilidad -->
 <div class="d-flex flex-column align-items-center p-2 m-2 border border-2 position-relative" style="width:250px;min-width: 250px;">
     <!-- Buttons -->
-    <button (click)="openPopUp()" class="btn my-2 my-sm-0 top-0 start-0 position-absolute">
+    <button *ngIf="logged" (click)="openPopUp()" class="btn my-2 my-sm-0 top-0 start-0 position-absolute">
         <fa-icon [icon]="faPen" class="text-white"></fa-icon>
     </button>
     
-    <button (click)="handleDelete()" class="btn my-2 my-sm-0 top-0 end-0 position-absolute">
+    <button *ngIf="logged" (click)="handleDelete()" class="btn my-2 my-sm-0 top-0 end-0 position-absolute">
         <fa-icon [icon]="faTrash" class="text-white"></fa-icon>
     </button>
 

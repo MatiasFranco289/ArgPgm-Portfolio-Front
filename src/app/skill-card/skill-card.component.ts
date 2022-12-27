@@ -28,6 +28,7 @@ export class SkillCardComponent{
 
   protected faPen;
   protected faTrash;
+  protected logged: boolean;
 
   constructor(){
     this.name = '';
@@ -36,6 +37,7 @@ export class SkillCardComponent{
     this.faTrash = faTrash;
     this.skillId = 0;
     this.editCreate = new EventEmitter<Iskill>;
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar

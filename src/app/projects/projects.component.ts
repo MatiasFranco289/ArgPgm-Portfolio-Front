@@ -37,8 +37,10 @@ export class ProjectsComponent implements OnInit{
   protected projects:Array<Iproject>;
   protected deleteModal:Idelete;
   protected editPopUp:Iproject;
+  protected logged: boolean;
 
   constructor(private http: HttpClient){
+    this.logged = !!sessionStorage.getItem('logged');
     this.faPlus = faPlus;
     this.projects = [];
     this.deleteModal = {id:-1,tablename:''}

@@ -56,7 +56,7 @@ export class ProjectCardComponent {
     this.faFlagCheckered = faFlagCheckered;
     this.faPen = faPen;
     this.faTrash = faTrash;
-    this.logged = true;
+    this.logged = !!sessionStorage.getItem('logged');
     this.projectInfo = {
       id_project: -2,
       title: "",

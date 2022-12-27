@@ -1,7 +1,7 @@
 <!-- Carta estudio -->
 <div class="p-2 d-flex border-bottom border-1 flex-wrap position-relative">
 
-    <div class="position-absolute top-0 end-0">
+    <div *ngIf="logged" class="position-absolute top-0 end-0">
         <button class="btn btn-outline-dark my-2 my-sm-0">
             <fa-icon (click)="handleEdit()" [icon]="faPen" class="text-white"></fa-icon>
         </button>

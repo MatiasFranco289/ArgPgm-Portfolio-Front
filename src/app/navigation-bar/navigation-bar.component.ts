@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-/* import { faCoffee } from '@fortawesome/free-solid-svg-icons'; */
+import { Component } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
@@ -7,19 +6,17 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.css']
 })
-export class NavigationBarComponent implements OnInit {
+export class NavigationBarComponent{
   protected logged: boolean;
   protected faBars;
 
   constructor() {
-    this.logged = false;
+    this.logged = !!sessionStorage.getItem('logged');
     this.faBars = faBars;
   }
 
-  ngOnInit(): void {
-  }
-
-  handleDisconnect():void{ //Implementar logica de desconexion aca
-    this.logged = !this.logged;
+  handleDisconnect():void{
+    sessionStorage.removeItem('logged');
+    window.location.reload();
   }
 }

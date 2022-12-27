@@ -29,12 +29,14 @@ export class ExperienceComponent implements OnInit{
   @Output() edit:EventEmitter<Iexperience>;
   protected faPlus;
   protected jobDurations:Array<string>;
+  protected logged: boolean;
 
   constructor(private http: HttpClient){
     this.experiences = [];
     this.faPlus = faPlus;
     this.edit = new EventEmitter<Iexperience>;
     this.jobDurations = [];
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   ngOnInit(): void {

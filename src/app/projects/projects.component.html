@@ -7,7 +7,7 @@
         <!-- Contender cartas -->
         <div class="mt-5">
 
-            <div class="position-absolute top-0 start-0 p-2">
+            <div *ngIf="logged" class="position-absolute top-0 start-0 p-2">
                 <button (click)='handleCreate({id_project: -1,title: "",dateInit: "",dateFinish: "",
                     description: "",urlGit: "",urlDeploy: "",urlVideo: "",urlImage: "",skills: []})'
                      class="btn btn-outline-success my-2 my-sm-0">

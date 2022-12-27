@@ -6,7 +6,7 @@
         <div class="position-relative">
             <h1>Blog</h1>
 
-            <button (click)="changePopUpState(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+            <button *ngIf="logged" (click)="changePopUpState(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
                 <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
             </button>
         </div>

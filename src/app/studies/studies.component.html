@@ -2,7 +2,7 @@
     <div class="position-relative">
         <h2 class="text-white mb-3">Estudios</h2>
 
-        <button (click)="handleAddStudy()" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+        <button *ngIf="logged" (click)="handleAddStudy()" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
             <i class="fa-solid fa-plus text-white fs-3"></i>
             <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
         </button>

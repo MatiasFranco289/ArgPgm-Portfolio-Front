@@ -39,6 +39,7 @@ export class ExperienceCardComponent{
   protected faCircle;
   protected faCalendar;
   protected faFlagCheckered;
+  protected logged: boolean;
 
   constructor(){
     this.name = '';
@@ -55,6 +56,7 @@ export class ExperienceCardComponent{
     this.edit = new EventEmitter<Iexperience>();
     this.faCalendar = faCalendar;
     this.faFlagCheckered = faFlagCheckered;
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   handleDelete():void{

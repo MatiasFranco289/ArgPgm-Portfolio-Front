@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faTrash, faPen, faCalendar } from '@fortawesome/free-solid-svg-icons'
 
 interface Idelete{
@@ -17,7 +17,7 @@ interface IdbImage{
   styleUrls: ['./blog-post.component.css']
 })
 
-export class BlogPostComponent{
+export class BlogPostComponent implements OnInit{
 
   @Input() title:string;
   @Input() date:string;
@@ -30,6 +30,8 @@ export class BlogPostComponent{
   protected faTrash;
   protected faPen;
   protected faCalendar;
+  protected logged: boolean;
+  protected segmentedDescription: Array<string>;
 
   constructor(){
     this.title = '';
@@ -41,6 +43,13 @@ export class BlogPostComponent{
     this.faCalendar = faCalendar;
     this.postId = 0;
     this.edit = new EventEmitter<number>;
+    this.logged = !!sessionStorage.getItem('logged');
+    this.segmentedDescription = [];
+  }
+
+
+  ngOnInit(): void {
+    this.segmentedDescription = this.description.split(/\r?\n/);
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar

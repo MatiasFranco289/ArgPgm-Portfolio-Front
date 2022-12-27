@@ -1,7 +1,7 @@
 <div class="p-3 text-center text-white info-card" style="margin-top:200px;">
     <div class="position-relative">
         <h2 class="mb-5">Experiencia</h2>
-        <button (click)='handleEdit({id_experience: -1,id_place: -1,title: "",description: "",
+        <button *ngIf="logged" (click)='handleEdit({id_experience: -1,id_place: -1,title: "",description: "",
         location: "",dateInit:"", dateFinish: ""})' class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 start-0">
             <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
         </button>

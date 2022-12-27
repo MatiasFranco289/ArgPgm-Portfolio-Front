@@ -24,11 +24,13 @@ export class SkillsComponent implements OnInit{
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
   @Output() editCreate:EventEmitter<Iskill>;
   protected faPlus;
+  protected logged: boolean;
 
   constructor(private http: HttpClient){
     this.skills = [];
     this.faPlus = faPlus;
     this.editCreate = new EventEmitter<Iskill>;
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   ngOnInit(): void {

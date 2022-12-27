@@ -21,13 +21,13 @@
             <a class="nav-link" routerLinkActive="active-link" routerLink="/blog" style="animation-delay:600ms;">Blog</a>
           </li>
 
-          <li *ngIf="logged" class="nav-item">
+          <li *ngIf="!logged" class="nav-item">
             <a routerLink="/login">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Conectarse</button>
             </a>
           </li>
 
-          <li *ngIf="!logged" class="nav-item">
+          <li *ngIf="logged" class="nav-item">
             <a (click) = handleDisconnect()>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Desconectarse</button>
             </a>

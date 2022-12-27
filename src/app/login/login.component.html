@@ -3,16 +3,16 @@
     <!-- Cuerpo principal -->
     <form *ngSwitchCase="''" class="text-white bg-secondary p-4 d-flex flex-column text-center" [formGroup]="loginForm">
         <label for="email">Usuario: </label>
-        <input formControlName="username" type="email" name="username" id="username" style="outline:none;"
+        <input autocomplete="true" formControlName="username" type="email" name="username" id="username" style="outline:none;"
         [ngClass]="{'border border-2 border-danger' : loginForm.get('username')?.status=='INVALID' && 
         loginForm.get('username')?.touched}" placeholder="Ingrese un mail valido">
 
         <label for="password">Contraseña: </label>
-        <input formControlName="pass" type="password" name="pass" id="pass" style="outline:none;"
+        <input autocomplete="false" formControlName="pass" type="password" name="pass" id="pass" style="outline:none;"
         [ngClass]="{'border border-2 border-danger' : loginForm.get('pass')?.status=='INVALID' && 
         loginForm.get('pass')?.touched}" placeholder="Al menos 6 caracteres">
 
-        <button (click)="sendForm()" type="submit" class="btn btn-outline-dark mt-3">
+        <button (click)="sendForm()" type="button" class="btn btn-outline-dark mt-3">
             Conectarse
         </button>
     </form>
@@ -21,7 +21,14 @@
     <div *ngSwitchCase="'error'" class="bg-secondary p-3 d-flex flex-column justify-content-center text-white text-center shadow align-items-center" 
     style="width:250px;">
         <h4>Tu formulario contiene errores, verifica que todo este bien antes de enviar.</h4>
-        <button (click)="closeError()" class="btn btn-outline-dark">Ok</button>
+        <button type="button" (click)="closeError()" class="btn btn-outline-dark">Ok</button>
+    </div>
+
+    <!-- popUp Wrong login -->
+    <div *ngSwitchCase="'wrong'" class="bg-secondary p-3 d-flex flex-column justify-content-center text-white text-center shadow align-items-center" 
+    style="width:250px;">
+        <h4>Los datos son incorrectos.</h4>
+        <button type="button" (click)="closeError()" class="btn btn-outline-dark">Ok</button>
     </div>
 
     <!-- popUp Loading -->

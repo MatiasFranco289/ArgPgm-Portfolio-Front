@@ -27,11 +27,13 @@ export class StudiesComponent implements OnInit{
   @Output() delete = new EventEmitter<Idelete>();//Emisor de evento para boton borrar
   @Output() edit:EventEmitter<Istudy>;
   protected faPlus;
+  protected logged: boolean;
 
   constructor(private http: HttpClient){
     this.studies = [];
     this.faPlus = faPlus;
     this.edit = new EventEmitter<Istudy>();
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   ngOnInit(): void {

@@ -12,6 +12,7 @@ export class AboutCardComponent implements OnChanges {
   @Output() aboutPopUp: EventEmitter<boolean>;
   protected faPen;
   protected descriptionSegmented:Array<string>;
+  protected logged: boolean;
 
   constructor(){
     this.img = '';
@@ -19,6 +20,7 @@ export class AboutCardComponent implements OnChanges {
     this.faPen = faPen;
     this.aboutPopUp = new EventEmitter<boolean>();
     this.descriptionSegmented = [];
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   ngOnChanges(changes: SimpleChanges): void {

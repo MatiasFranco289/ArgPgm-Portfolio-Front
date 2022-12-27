@@ -31,6 +31,7 @@ export class StudyCardComponent{
   protected faTrash;
   protected faCalendar;
   protected faFlagCheckered;
+  protected logged: boolean;
 
   constructor(){
     this.img = '';
@@ -48,6 +49,7 @@ export class StudyCardComponent{
     this.edit = new EventEmitter<Istudy>();
     this.faCalendar = faCalendar;
     this.faFlagCheckered = faFlagCheckered;
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   handleDelete(): void{//Cuando tocan el boton de eliminar

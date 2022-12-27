@@ -29,12 +29,14 @@ export class BlogComponent implements OnInit {
   protected publications: Array<Iblog>;
   protected deleteModal:Idelete;
   protected popUpState:number;
+  protected logged:boolean;
 
   constructor() { 
     this.faPlus = faPlus;
     this.publications = [];
     this.deleteModal = {id:-1,tablename:''};
     this.popUpState = -2;
+    this.logged = !!sessionStorage.getItem('logged');
   }
 
   ngOnInit(): void {
