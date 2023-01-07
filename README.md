@@ -1,7 +1,9 @@
 # Yo programo 3ra edicion - Portfolio (Frontend)
 
+<h2>Deploy: <a href="https://argpgm-portfolio.web.app">https://argpgm-portfolio.web.app</a></h2>
 
-### Front end de portfolio personal realizado para el curso Yo Programo 3ra edicion.
+### Portfolio personal realizado como proyecto final para el curso "Argentina programa 3ra edicion".
 <br>
-
-*Proyecto en progreso. Este readme sera actualizado cuando el proyecto este completo*
+Este proyecto fue llevado a cabo utilizando Angular y TypeScript para la parte del front y Java con Spring Boot, JPA y MySQL para la parte del back.
+<br>
+Costa de diferentes secciones con informacion sobre mi, mis proyectos, estudios, etc. Todas ellas son editables.
