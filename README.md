@@ -6,4 +6,6 @@
 <br>
 Este proyecto fue llevado a cabo utilizando Angular y TypeScript para la parte del front y Java con Spring Boot, JPA y MySQL para la parte del back.
 <br>
-Costa de diferentes secciones con informacion sobre mi, mis proyectos, estudios, etc. Todas ellas son editables.
+
+Consta de diferentes secciones con informacion sobre mi, mis proyectos, estudios, etc. Todas ellas son editables.
+
