@@ -1,0 +1,28 @@
+<!-- Carta estudio -->
+<div class="p-2 d-flex border-bottom border-1 flex-wrap position-relative">
+
+    <div *ngIf="logged" class="position-absolute top-0 end-0">
+        <button class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon (click)="handleEdit()" [icon]="faPen" class="text-white"></fa-icon>
+        </button>
+        
+        <button (click)="handleDelete()" class="btn btn-outline-dark my-2 my-sm-0">
+            <fa-icon [icon]="faTrash" class="text-white"></fa-icon>
+        </button>
+    </div>
+
+    <img src="{{img}}" alt="thumbnail.png" style="width:80px;height:80px;box-shadow:0 0 2px black;">
+    
+    <div class="text-white ms-3 mt-3 text-start">
+        <h4 class="m-0">{{studyInfo.title}}</h4>
+        <h6 class="m-0">{{studyInfo.typeName}}</h6>
+        <p>
+            <fa-icon [icon]="faCalendar" class="text-white"></fa-icon>
+            {{' '+studyInfo.dateInit}}
+            <fa-icon [icon]="faFlagCheckered" class="text-white ms-2"></fa-icon>
+            {{' '+studyInfo.dateFinish}}
+        </p>
+
+        <h6>{{studyInfo.description}}</h6>
+    </div>
+</div>

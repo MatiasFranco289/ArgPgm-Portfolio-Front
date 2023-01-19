@@ -1,0 +1,32 @@
+<div style="min-height:100vh;">
+    <navigation-bar></navigation-bar>
+    <!-- Seccion principal -->
+    <div class="container-sm text-white text-center">
+
+        <div class="position-relative">
+            <h1>Blog</h1>
+
+            <button *ngIf="logged" (click)="changePopUpState(-1)" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+                <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
+            </button>
+        </div>
+        
+
+        <!-- Publicaciones -->
+        <div class="position-relative">
+            <div *ngFor="let p of publications let i = index">
+                <!-- Aca tendrias que mandarle la informacion guardada en publications que deberia ser un objeto con info de la DB -->
+                <blog-post title={{p.title}} date={{p.createdAt}}
+                description={{p.description}}
+                [imgs]="p.images"
+                [postId] = "p.id_post" (delete) = "handleDelete($event)" (edit)="changePopUpState($event)">
+                </blog-post>
+            </div>
+
+            <h5 *ngIf="!publications.length" class="text-secondary">Oops, parece que no hay publicaciones todavia :/</h5>
+        </div>
+    </div>
+
+    <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
+    <blog-form [popUpState]="popUpState" (close)="closePopUp()"></blog-form>
+</div>

@@ -1,0 +1,25 @@
+<div class="p-3 text-center from-left" style="margin-top:200px;">
+    <div class="position-relative">
+        <h2 class="text-white mb-3">Estudios</h2>
+
+        <button *ngIf="logged" (click)="handleAddStudy()" class="btn btn-outline-success my-2 my-sm-0 position-absolute top-0 end-0">
+            <i class="fa-solid fa-plus text-white fs-3"></i>
+            <fa-icon [icon] = "faPlus" class="text-white fs-3"></fa-icon>
+        </button>
+    </div>
+    <!-- Contenedor estudios -->
+    <div class="p-3">
+
+        <div *ngFor="let s of studies let i = index">
+            <!-- Esto lo deberias rellenar con datos de s en realidad que va a ser un objeto que te va a dar el padre de este componente -->
+            <study-card
+            [studyInfo]="s"
+            img="https://i.ibb.co/0MBxcNF/estudio.png"
+            (delete)="handleDelete($event)"
+            (edit)="handleEdit($event)">
+            </study-card>
+        </div>
+        
+        <h5 *ngIf="!studies.length" class="text-secondary">Oops, parece que no hay estudios todavia :/</h5>
+    </div>
+</div>

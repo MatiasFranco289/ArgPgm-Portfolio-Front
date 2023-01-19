@@ -1,0 +1,30 @@
+<div *ngIf="deleteInfo.id!=-1" class="position-fixed top-0 start-0 d-flex justify-content-center 
+align-items-center text-white" style="background-color:rgba(255,255,255,.4);min-width: 100vw;
+min-height: 100vh;backdrop-filter: blur(5px);">
+
+    <div [ngSwitch]="deletePhase" class="bg-dark p-3 shadow" style="min-width:200px">
+
+        <div *ngSwitchCase="''" class="d-flex justify-content-center flex-column">
+            <h2>Estas seguro que deseas eliminar esto?</h2>
+            <button (click)="handleDelete()" class="btn btn-outline-danger m-2">Si</button>
+            <button (click)="handleClose(false)" class="btn btn-outline-success m-2">No</button>
+        </div>
+
+        <div *ngSwitchCase="'deleting'" class="d-flex justify-content-center align-items-center flex-column">
+            <h2>Espere..</h2>
+            <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Borrando...</span>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'done'" class="d-flex justify-content-center align-items-center flex-column">
+            <h2>Listo</h2>
+            <p>El elemento fue borrado correctamente.</p>
+            <button (click)="handleClose(true)" class="btn btn-outline-success m-2">Ok</button>
+        </div>
+
+
+        
+    </div>
+
+</div>

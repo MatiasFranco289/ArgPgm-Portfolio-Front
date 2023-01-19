@@ -1,0 +1,38 @@
+<!-- Este componente es el encargado de recuperar datos de la db y brindarselos a todos sus hijos -->
+<div class="bg-dark" style="min-height:100vh;">
+    <navigation-bar></navigation-bar>
+    <!-- Cuerpo principal -->
+    <div class="text-center">
+        <h1 class="text-white mt-5 title-project">Mis Proyectos</h1>
+        <!-- Contender cartas -->
+        <div class="mt-5">
+
+            <div *ngIf="logged" class="position-absolute top-0 start-0 p-2">
+                <button (click)='handleCreate({id_project: -1,title: "",dateInit: "",dateFinish: "",
+                    description: "",urlGit: "",urlDeploy: "",urlVideo: "",urlImage: "",skills: []})'
+                     class="btn btn-outline-success my-2 my-sm-0">
+                    <fa-icon [icon]="faPlus" class="text-white fs-3"></fa-icon>
+                </button>
+            </div>
+
+            <div *ngFor="let p of projects let i = index">
+                <!-- Esto deberia rellenarlo con la info contenida en projects que deberia ser un objeto con info traida de la DB -->
+                <!-- Fijate si le podes poner un delay dependiendo del index a cada carta -->
+                <project-card [projectInfo]="p"
+                (delete) = "handleDelete($event)"
+                (edit)="handleCreate($event)">
+                </project-card>
+            </div>
+
+            <h5 *ngIf="!projects.length" class="text-secondary">Oops, parece que no hay proyectos todavia :/</h5>
+            
+        </div>
+    </div>
+    <delete-modal [deleteInfo]="deleteModal" (delete)="handleDelete($event)"></delete-modal>
+</div>
+
+<!-- (isOpenChange) es el evento emisor definido en el elemento hijo <projects-form>, asi que aca digo
+que cuando ese evento sea emitido por el componente hijo va a llamar a el metodo handleCreate() de este
+componente que seria el padre -->
+<projects-form [popUpState]="editPopUp" (close)='handleCreate({id_project: -2,title: "",dateInit: "",dateFinish: "",
+description: "",urlGit: "",urlDeploy: "",urlVideo: "",urlImage: "",skills: []})'></projects-form>

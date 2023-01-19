@@ -1,118 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <!-- CSS propio -->
-        <link rel="stylesheet" href="css/Nav.css">
-        <link rel="stylesheet" href="css/Home.css">
-        <!-- Fuentes -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-        <title>Matias Franco</title>
-      </head>
-
-<body class="bg-dark d-flex flex-column justify-content-between" style="min-height:100vh;">
-
-    <!-- ELIMINAR ESTO CUANDO TERMINEN DE CORREGIR 2da etapa -->
-    <script>
-      alert(`
-      Hola! Notaras que la mayoria de secciones de la pagina no tienen 
-      informacion real y funcionan mas como una plantilla.
-      Esto es porque esos datos vendran mas tarde la DB asi que no quize
-      perder tiempo escribiendolos dos veces. Suerte ;)`);
-    </script>
-
-    <!-- Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-
-        <button class="navbar-toggler ms-auto mb-2 mb-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/src/index.html" style="animation-delay:0ms;">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/proyectos.html" style="animation-delay:200ms;">Proyectos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/about.html" style="animation-delay:400ms;">Sobre mi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/blog.html" style="animation-delay:600ms;">Blog</a>
-            </li>
-
-            <li class="nav-item">
-              <a href="/src/login.html">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Conectarse</button>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-  </nav>
-
-    <!-- Cuerpo principal -->
-    <div class="flex-fill d-flex justify-content-center align-items-center flex-column">
-      <!-- Contenedor  central-->
-      <div class="d-flex justify-content-center flex-column p-3 b-line">
-        <!-- Contenedor titulo -->
-        <div>
-          <svg height="93" viewBox="0 0 486 93" fill="none" xmlns="http://www.w3.org/2000/svg" class="title1">
-            <path d="M102.696 2.14401V92H80.808V38.112L60.712 92H43.048L22.824 37.984V92H0.936005V2.14401H26.792L52.008 64.352L76.968 2.14401H102.696Z" stroke="white" strokeWidth="3"/>
-            <path d="M174.372 76.128H140.836L135.46 92H112.548L145.06 2.14401H170.404L202.916 92H179.748L174.372 76.128ZM168.74 59.232L157.604 26.336L146.596 59.232H168.74Z" stroke="white" strokeWidth="3"/>
-            <path d="M277.451 2.14401V19.68H253.643V92H231.755V19.68H207.947V2.14401H277.451Z" stroke="white" strokeWidth="3"/>
-            <path d="M310.324 2.14401V92H288.436V2.14401H310.324Z" stroke="white" strokeWidth="3"/>
-            <path d="M382.122 76.128H348.586L343.21 92H320.298L352.81 2.14401H378.154L410.666 92H387.498L382.122 76.128ZM376.49 59.232L365.354 26.336L354.346 59.232H376.49Z" stroke="white" strokeWidth="3"/>
-            <path d="M453.073 92.896C446.502 92.896 440.614 91.8293 435.409 89.696C430.204 87.5627 426.022 84.4053 422.865 80.224C419.793 76.0427 418.172 71.008 418.001 65.12H441.297C441.638 68.448 442.79 71.008 444.753 72.8C446.716 74.5067 449.276 75.36 452.433 75.36C455.676 75.36 458.236 74.6347 460.113 73.184C461.99 71.648 462.929 69.5574 462.929 66.912C462.929 64.6934 462.161 62.8587 460.625 61.408C459.174 59.9573 457.34 58.7627 455.121 57.824C452.988 56.8853 449.916 55.8187 445.905 54.624C440.102 52.832 435.366 51.04 431.697 49.248C428.028 47.456 424.87 44.8107 422.225 41.312C419.58 37.8133 418.257 33.248 418.257 27.616C418.257 19.2533 421.286 12.7253 427.345 8.03201C433.404 3.25335 441.297 0.864014 451.025 0.864014C460.924 0.864014 468.902 3.25335 474.961 8.03201C481.02 12.7253 484.262 19.296 484.689 27.744H461.009C460.838 24.8427 459.772 22.5813 457.809 20.96C455.846 19.2533 453.329 18.4 450.257 18.4C447.612 18.4 445.478 19.1253 443.857 20.576C442.236 21.9413 441.425 23.9467 441.425 26.592C441.425 29.4933 442.79 31.7547 445.521 33.376C448.252 34.9973 452.518 36.7467 458.321 38.624C464.124 40.5867 468.817 42.464 472.401 44.256C476.07 46.048 479.228 48.6507 481.873 52.064C484.518 55.4773 485.841 59.872 485.841 65.248C485.841 70.368 484.518 75.0187 481.873 79.2C479.313 83.3813 475.558 86.7094 470.609 89.184C465.66 91.6587 459.814 92.896 453.073 92.896Z" stroke="white" strokeWidth="3"/>
-          </svg>
-    
-          <svg  height="93" viewBox="0 0 532 93" fill="none" xmlns="http://www.w3.org/2000/svg" class="title2">
-              <path d="M59.432 2.14401V19.68H22.824V38.624H50.216V55.648H22.824V92H0.935974V2.14401H59.432Z" stroke="white" strokeWidth="3"/>
-              <path d="M116.76 92L98.072 58.08H92.824V92H70.936V2.14401H107.672C114.755 2.14401 120.771 3.38135 125.72 5.85601C130.755 8.33068 134.509 11.744 136.984 16.096C139.459 20.3627 140.696 25.1413 140.696 30.432C140.696 36.4053 138.989 41.7387 135.576 46.432C132.248 51.1253 127.299 54.4533 120.728 56.416L141.464 92H116.76ZM92.824 42.592H106.392C110.403 42.592 113.389 41.6107 115.352 39.648C117.4 37.6853 118.424 34.912 118.424 31.328C118.424 27.9147 117.4 25.2267 115.352 23.264C113.389 21.3013 110.403 20.32 106.392 20.32H92.824V42.592Z" stroke="white" strokeWidth="3"/>
-              <path d="M210.372 76.128H176.836L171.46 92H148.548L181.06 2.14401H206.404L238.916 92H215.748L210.372 76.128ZM204.74 59.232L193.604 26.336L182.596 59.232H204.74Z" stroke="white" strokeWidth="3"/>
-              <path d="M329.195 92H307.307L270.699 36.576V92H248.811V2.14401H270.699L307.307 57.824V2.14401H329.195V92Z" stroke="white" strokeWidth="3"/>
-              <path d="M341.349 46.944C341.349 38.0693 343.269 30.176 347.109 23.264C350.949 16.2667 356.282 10.848 363.109 7.00801C370.021 3.08268 377.829 1.12001 386.533 1.12001C397.2 1.12001 406.33 3.93601 413.925 9.56801C421.52 15.2 426.597 22.88 429.157 32.608H405.093C403.301 28.8534 400.741 25.9947 397.413 24.032C394.17 22.0693 390.458 21.088 386.277 21.088C379.536 21.088 374.074 23.4347 369.893 28.128C365.712 32.8213 363.621 39.0933 363.621 46.944C363.621 54.7947 365.712 61.0667 369.893 65.76C374.074 70.4533 379.536 72.8 386.277 72.8C390.458 72.8 394.17 71.8187 397.413 69.856C400.741 67.8934 403.301 65.0347 405.093 61.28H429.157C426.597 71.008 421.52 78.688 413.925 84.32C406.33 89.8667 397.2 92.64 386.533 92.64C377.829 92.64 370.021 90.72 363.109 86.88C356.282 82.9547 350.949 77.536 347.109 70.624C343.269 63.712 341.349 55.8187 341.349 46.944Z" stroke="white" strokeWidth="3"/>
-              <path d="M485.057 92.896C476.609 92.896 468.844 90.9333 461.761 87.008C454.764 83.0827 449.174 77.6213 444.993 70.624C440.897 63.5413 438.849 55.6053 438.849 46.816C438.849 38.0267 440.897 30.1333 444.993 23.136C449.174 16.1387 454.764 10.6773 461.761 6.75201C468.844 2.82668 476.609 0.864014 485.057 0.864014C493.505 0.864014 501.228 2.82668 508.225 6.75201C515.308 10.6773 520.854 16.1387 524.865 23.136C528.961 30.1333 531.009 38.0267 531.009 46.816C531.009 55.6053 528.961 63.5413 524.865 70.624C520.769 77.6213 515.222 83.0827 508.225 87.008C501.228 90.9333 493.505 92.896 485.057 92.896ZM485.057 72.928C492.225 72.928 497.942 70.5387 502.209 65.76C506.561 60.9813 508.737 54.6667 508.737 46.816C508.737 38.88 506.561 32.5653 502.209 27.872C497.942 23.0933 492.225 20.704 485.057 20.704C477.804 20.704 472.001 23.0507 467.649 27.744C463.382 32.4373 461.249 38.7947 461.249 46.816C461.249 54.752 463.382 61.1093 467.649 65.888C472.001 70.5813 477.804 72.928 485.057 72.928Z" stroke="white" strokeWidth="3"/>
-          </svg>
-        </div>
-        <!-- Subtitulo -->
-        <h2 class="text-white mt-2 subtitle">FULL STACK WEB DEVELOPER</h2>
-
-        <div class="w-100 iconContainer">
-          <a href="mailto:matias.franco289@gmail.com">
-            <i class="fa-solid fa-envelope text-white m-1"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/matiasfranco289/">
-            <i class="fa-brands fa-linkedin text-white m-1"></i>
-          </a>
-          <a href="https://github.com/MatiasFranco289">
-            <i class="fa-brands fa-github text-white m-1"></i>
-          </a>
-        </div>
-      </div>
-    
-      
-    </div>
-
-    
-
-      <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/7cd8931823.js" crossorigin="anonymous"></script>
+<head>
+  <meta charset="utf-8">
+  <title>Front</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
 </body>
-
 </html>

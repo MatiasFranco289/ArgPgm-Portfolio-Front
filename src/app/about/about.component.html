@@ -1,0 +1,43 @@
+
+<!-- Este componente sera el encargado de enviar la informaciona  todos estos -->
+<div style="min-height:100vh;">
+    <navigation-bar></navigation-bar>
+    <!-- Seccion principal -->
+    <div class="container-sm d-flex justify-content-center from-left">
+        <div class="col-10">
+            
+            <!-- About -->
+            <about-card [img]="this.aboutImgUrl" [description]="this.aboutDescription" (aboutPopUp)="handleEditAbout()"></about-card>
+
+            <!-- Conocimientos -->
+            <skills (delete)="handleDelete($event)" (editCreate)="handleEditSkill($event)"></skills>
+
+            <!-- Estudios -->
+            <studies (delete)="handleDelete($event)" (edit)="handleEditStudy($event)"></studies>
+
+            <!-- Experiencia -->
+            <experience (delete)="handleDelete($event)" (edit)="handleEditExperience($event)"></experience>
+
+            
+        </div>
+    </div>
+    <!-- Modal de Borrado -->
+    <delete-modal [deleteInfo]="deleteModal" (delete) = "handleDelete($event)"></delete-modal>
+    <!-- Modal de Skills -->
+    <skill-form [popUpState]="popUpSkill" (close)="handleEditSkill({id_skill:-2,skill_name:'',percentaje:0})"></skill-form>
+    <!-- Modal de About -->
+    <about-form [popUpState]="popUpAbout" description="{{aboutDescription}}" imgUrl="{{aboutImgUrl}}" (close)="handleEditAbout()">
+    </about-form>
+    <!-- Modal de Studies -->
+    <studies-form [popUpState]="popUpStudies" (close)="handleEditStudy({
+        id_study: -2,
+        description: '',
+        dateInit: '',
+        dateFinish: '',
+        title: '',
+        typeName: '',
+        typeId: -2
+      })"></studies-form>
+    <!-- Modal de Experiences -->
+    <experience-form [popUpState]="popUpExperiences" (close)="handleEditExperience($event)"></experience-form>
+</div>
